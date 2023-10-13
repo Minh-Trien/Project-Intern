@@ -1,0 +1,202 @@
+<c-row ngPreserveWhitespaces>
+    <c-col xs="12">
+        <div class="header-table my-2">
+          <span class="mx-5"><c-input-group class="flex-nowrap">
+            <span cInputGroupText id="addon-wrapping">Search</span>
+            <input 
+            aria-describedby="addon-wrapping"
+            aria-label="user Name"
+            cFormControl
+            placeholder="user Name"
+            [(ngModel)]="searchTerm" 
+            (ngModelChange)="onSearchInputChange(searchTerm)"
+          />
+        </c-input-group></span>
+
+          <span >
+            <button 
+            (click)="toggleLiveDemo()"
+            cButton color="dark" 
+            variant="outline"
+            class=""     
+            >Add New user</button>
+          </span>
+<!--AddOrUpdate: true: Add,false: Update-->
+        </div>  
+        <c-modal id="liveDemoModal" [visible]="liveDemoVisible" (visibleChange)="handleLiveDemoChange($event)">
+          <c-modal-header>
+
+            <h5 *ngIf="addOrUpdate"   cModalTitle>Add New user</h5>
+            <h5 *ngIf="!addOrUpdate"   cModalTitle>Update New user</h5>
+            <button (click)="toggleLiveDemo()" cButtonClose></button>
+          </c-modal-header>
+          <c-modal-body>
+            <form cForm class="row g-3">
+              <c-col [md]="6">
+                <label cLabel for="">Email</label>
+                <input 
+                cFormControl 
+                id="inputName" 
+                type="email"
+                required [(ngModel)]="user.email"
+                name="email"
+                />
+              </c-col>
+              <c-col [md]="6">
+                <label cLabel for="">Password</label>
+                <input 
+                cFormControl 
+                id="Password" 
+                type="password"
+                required [(ngModel)]="user.password"
+                name="password"
+                />
+              </c-col>
+              <c-col [xs]="12">
+                <label cLabel for="">FirstName</label>
+                <input 
+                cFormControl 
+                id="FirstName" 
+                placeholder="firstName" 
+                type="Text"
+                required [(ngModel)]="user.firstName"
+                name="firstName"
+                />
+              </c-col>
+              <c-col [xs]="12">
+                <label cLabel for="">LastName</label>
+                <input 
+                cFormControl 
+                id="" 
+                placeholder="Price" 
+                type="Text" 
+                required [(ngModel)]="user.lastName"
+                name="lastName"
+                />
+              </c-col>
+              <c-col [md]="6">
+                <label cLabel for="">Phone</label>
+                <input 
+                cFormControl 
+                id="" 
+                type="Text"
+                required [(ngModel)]="user.phone"
+                name="phone"
+                />
+              </c-col>
+              <c-col [md]="4">
+                <label cLabel for="">Address</label>
+                <input 
+                cFormControl 
+                id="" 
+                type="Text"
+                required [(ngModel)]="user.address"
+                name="address">
+                
+              </c-col>             
+            </form>      
+          </c-modal-body>
+          <c-modal-footer>
+            <button (click)="toggleLiveDemo()" cButton color="secondary">
+              Close
+            </button>
+            <button 
+            *ngIf="addOrUpdate"
+            cButton 
+            color="primary"
+            (click)="saveUser()"
+            >Save Add</button>
+            <button 
+            *ngIf="!addOrUpdate"
+            cButton 
+            color="primary"
+            (click)="saveUpdate(user.id)"
+            >Save Update</button>
+          </c-modal-footer>
+        </c-modal>   
+    </c-col>
+    <c-col xs="12">
+      <c-card class="mb-4">       
+        <c-card-header>
+          <strong>user List</strong> <small></small>
+        </c-card-header>
+        <c-card-body>
+            <table cTable hover>
+                <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">
+                  ID
+                  <i (click) ="handleSort('id','asc')"><svg 
+                  cIcon name="cil-arrow-top" 
+                  size="2xl" 
+                  ></svg></i>
+                  <i (click) ="handleSort('id','desc')"><svg 
+                    cIcon name="cil-arrow-bottom" 
+                    size="2xl"
+                    ></svg></i>
+                  </th>
+                  
+                  <th scope="col">Email
+                    <i (click) ="handleSort('email','asc')"><svg 
+                      cIcon name="cil-arrow-top" 
+                      size="2xl" 
+                      ></svg></i>
+                      <i (click) ="handleSort('email','desc')"><svg 
+                        cIcon name="cil-arrow-bottom" 
+                        size="2xl"
+                        ></svg></i>
+                  </th>
+                  <th scope="col">Password</th>
+                  <th scope="col">FirstName</th>
+                  <th scope="col">LastName</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr  class=""
+                *ngFor="let user of users  | paginate : {
+                  itemsPerPage: pageSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+              let i = index">
+                  <th scope="row">{{i}}</th>
+                  <td>{{user.id}}</td>
+                  <td>{{user.email}}</td>
+                  <td>{{user.password}}</td>
+                  <td>{{user.firstName}}</td>
+                  <td>{{user.lastName}}</td>
+                  <td>{{user.phone}}</td>
+                  <td>{{user.address}}</td>
+                  <td>
+                    <button
+                    cButton color="info" 
+                    variant="outline"
+                    class=""
+                    (click)="update(user.id)"
+                    >Update</button>
+                    <button
+                    cButton color="success" 
+                    variant="outline"
+                    class=""
+                    >Hidden</button>
+                  </td>
+                </tr>
+                </tbody>
+              </table> 
+              <div class="col-md-12">
+                <pagination-controls
+                  previousLabel="Prev"
+                  nextLabel="Next"
+                  [responsive]="true"
+                  (pageChange)="handlePageChange($event)"
+                ></pagination-controls>
+              </div>                
+        </c-card-body>  
+      </c-card>
+    </c-col>    
+  </c-row>
+

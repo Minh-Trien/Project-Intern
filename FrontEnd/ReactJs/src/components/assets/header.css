@@ -1,0 +1,20 @@
+/* CSS */
+.login-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #ffffff; /* Đổi màu nền thành Pink (hồng kem) */
+    color: black;
+    font-size: 16px;
+    border: none;
+    font-weight: bold;
+    opacity: 0.7;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .login-button:hover {
+    background-color: #f5ece1; /* Đổi màu nền khi hover chuột */
+    opacity: 1;
+  }
+  
