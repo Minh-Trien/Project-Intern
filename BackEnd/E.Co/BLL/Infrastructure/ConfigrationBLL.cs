@@ -26,6 +26,7 @@ namespace BLL.Infrastructure
             services.AddTransient<ProductRepository>();
             services.AddTransient<UserRepository>();
             services.AddTransient<TokenRepository>();
+            services.AddTransient<Email>();
             services.AddAuthentication(opt =>
             {
                 opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -49,10 +50,7 @@ namespace BLL.Infrastructure
                 {
                     opt.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
                 });
-
-            services.Configure<MailSettings>(configuration.GetSection("MailSettings"));
-
-            services.AddTransient<IEmailSender, EmailSender>();
+           
            
 
 

@@ -17,12 +17,12 @@ namespace Shopping.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly IEmailSender _emailSender;
+        private readonly Email _email;
         private readonly AuthService _authService;
-        public AuthController(AuthService authService, IEmailSender emailSender)
+        public AuthController(AuthService authService, Email email)
         {
             _authService = authService;
-            _emailSender = emailSender;
+            _email = email;
 
         }
 
@@ -95,10 +95,10 @@ namespace Shopping.Controllers
 
         [AllowAnonymous]
         [HttpPost("sendEmail")]
-        public async Task<IActionResult> SendEmail( string email, string subject, string message)
+        public async Task<IActionResult> SendEmail( string email, string fogot)
         {
-            
-            return Ok();
+            (bool, int) afterSend =    _email.sendOTP(email,fogot );
+            return Ok(afterSend);
         }
 
     }
