@@ -2200,7 +2200,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\TrienTM\\.nuget\\packages\\": {}
+    "C:\\Users\\TrienTM\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -2211,6 +2212,9 @@
       "packagesPath": "C:\\Users\\TrienTM\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\TrienTM\\Documents\\Kai Project\\BackEnd\\E.Co\\Shopping\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\TrienTM\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"

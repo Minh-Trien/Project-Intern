@@ -1,36 +1,36 @@
 import React, { useState } from 'react';
-import { useCart } from './CartContext';
+import { useDispatch, useSelector } from 'react-redux';
 
 function CartIcon() {
-  const { cart } = useCart();
   const [isCartOpen, setIsCartOpen] = useState(false);
+  let cart = useSelector(state => state.cart.cartItems)
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
   };
 
+  const getTotalPrice = () => {
+    return cart.reduce((total, item) => total + item.product.price * item.quantity, 0);
+  };
+
   return (
-    
-    <div className="cart-container">
+  <>
+  <div className='cart-container '>
       <div
         className="cart-icon"
         style={{ width: "1cm", height: "1cm" }}
         onClick={toggleCart}
       >
-        <li>
-          <a id="cart">
-            <img src="./assets/images/Cart.png" alt="Cart" />
-            <i aria-hidden="true" />
-          </a>
-        </li>
-      </div>{" "}
+        <i className="fa-solid fa-cart-shopping" id='cart'></i>
+      </div>
+
       {/*end navbar-right */}
       <div className={`shopping-cart ${isCartOpen ? 'open' : ''}`}>
         <div className="shopping-cart-header">
-          <i className="fa fa-shopping-cart cart-icon" />
-          <span className="badge" />
-          <div className="shopping-cart-total">
-            <span className="lighter-text"></span>
+          
+          <span className="lighter-text">Total Price: {getTotalPrice()}$</span>
+          <div className="shopping-cart-total "> 
+            <span className="lighter-text"> </span>
             <span className="main-color-text" />
           </div>
         </div>{" "}
@@ -38,15 +38,15 @@ function CartIcon() {
 
         {cart.map((item) => (
           <ul className="shopping-cart-items" key={item.id}>
-            <li className="clearfix">
-            <img style={{ height: "1cm", width: "1cm" }} src={item.image} alt={item.name} />
+          <li className="clearfix">
+          <img style={{ height: "1cm", width: "1cm" }} src={item.product.image} alt={item.product.name} />
 
-          <span className="item-name col-md-3">{item.name}</span>
+          <span className="item-name col-md-3">{item.product.name}</span>
 
-      <span className="item-price col-md-3">{item.price} $</span>
+          <span className="item-price col-md-3">{item.product.price} $</span>
 
-  <span className="item-quantity col-md-3">sl: {item.quantity}</span>
-</li>
+          <span className="item-quantity col-md-3">sl: {item.quantity}</span>
+          </li>
 
           </ul>
         ))}
@@ -60,7 +60,7 @@ function CartIcon() {
         </ul>
       </div>
     </div>
-    
+      </>
   );
 }
 

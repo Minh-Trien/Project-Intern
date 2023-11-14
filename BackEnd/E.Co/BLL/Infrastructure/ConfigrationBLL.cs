@@ -26,6 +26,7 @@ namespace BLL.Infrastructure
             services.AddTransient<ProductRepository>();
             services.AddTransient<UserRepository>();
             services.AddTransient<TokenRepository>();
+            services.AddTransient<CartRepository>();
             services.AddTransient<Email>();
             services.AddAuthentication(opt =>
             {

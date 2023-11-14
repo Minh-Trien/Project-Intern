@@ -29,7 +29,6 @@ namespace DataAccess.Repository
         {
             return await _db.Products.CountAsync();
         }
-
         public async Task<IEnumerable<Product>> GetProductNoHidden(int page, int pageSize)
         {
             int skip = (page - 1) * pageSize;
@@ -81,11 +80,27 @@ namespace DataAccess.Repository
             var products = await _db.Products
                 .Where(p => p.TaskId == id && p.Hidden == true)
                 .ToListAsync();
-
            return  products.Skip(skip)
                 .Take(pageSize);
         }
-        
+        public async Task<int> totalItemByTaskId(int id)
+        {
+            var products = await  _db.Products
+                .Where(p => p.TaskId == id && p.Hidden == true)
+                .ToListAsync();
+            var total = products.Count();
+                
+            return total;
+        }
+        public async Task<int> totalItemNoHidden()
+        {
+            var products = await _db.Products
+                .Where(p =>  p.Hidden == true)
+                .ToListAsync();
+            var total = products.Count();
+            return total;
+        }
+
         public async Task<IEnumerable<Product>> SearchNoHidden(string keyword, int page, int pageSize)
         {
             int skip = (page - 1) * pageSize;
@@ -98,8 +113,17 @@ namespace DataAccess.Repository
                 .Take(pageSize);
         }
 
-
-
-
+        public async Task<int> totalItemSearch(string keyword)
+        {
+            var products = await _db.Products
+                .Where(p => p.Name.Contains(keyword) && p.Hidden == true) // Điều kiện tìm kiếm sử dụng filter                                                                         // Chọn số lượng mục cho trang hiện tại
+                .ToListAsync();
+            var total = products.Count();
+            return total;
         }
+
+
+
+
+    }
 }

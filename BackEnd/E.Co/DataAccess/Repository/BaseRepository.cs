@@ -32,6 +32,16 @@ namespace DataAccess.Repository
             await _db.SaveChangesAsync();
         }
 
+        public virtual async Task<T> DeleteIdAsync(int primaryKey)
+        {
+            var obj = await entities.FindAsync(primaryKey);
+
+            if (obj == null) return null;
+            else entities.Remove(entity: obj);
+            await _db.SaveChangesAsync();
+            return obj;
+        }
+
         /// <summary>
         /// Retrieves all entities of type <typeparamref name="T"/> asynchronously.
         /// </summary>
@@ -62,7 +72,7 @@ namespace DataAccess.Repository
         }
         public virtual async Task<T> GetIdAsync(int primaryKey)
         {
-            return await entities.FindAsync(primaryKey);
+            return await entities.FindAsync(primaryKey);    
         }
 
         /// <summary>
@@ -85,6 +95,13 @@ namespace DataAccess.Repository
             await _db.SaveChangesAsync();  
         }
 
+        public async Task<T>  InsertAsyncReturn(T entity)
+        {
+            await entities.AddAsync(entity);
+            await _db.SaveChangesAsync();
+            return entity;
+        }
+
         /// <summary>
         /// Updates an existing entity of type <typeparamref name="T"/> asynchronously based on its primary key.
         /// </summary>
@@ -96,7 +113,7 @@ namespace DataAccess.Repository
 
             if (local != null)//detached
                 _db.Entry(local).State = EntityState.Detached;
-
+                
             // set Modified flag in your entry
             _db.Entry(entity).State = EntityState.Modified;
 
@@ -104,7 +121,20 @@ namespace DataAccess.Repository
             return  entity;
         }
 
-        public virtual async System.Threading.Tasks.Task UpdateAsync(TPrimaryKey key, T entity)
+        public virtual async System.Threading.Tasks.Task UpdateAsync(int key, T entity)
+        {
+            var local = await GetIdAsync(key);
+
+            if (local != null)//detached
+                _db.Entry(local).State = EntityState.Detached;
+
+            // set Modified flag in your entry
+            _db.Entry(entity).State = EntityState.Modified;
+
+            await _db.SaveChangesAsync();//save changes to the database.
+        }
+
+        public System.Threading.Tasks.Task UpdateAsync(TPrimaryKey key, T entity)
         {
             throw new NotImplementedException();
         }

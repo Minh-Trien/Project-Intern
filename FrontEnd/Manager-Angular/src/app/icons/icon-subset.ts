@@ -36,6 +36,7 @@ import {
   cilChevronRight,
   cilCloudDownload,
   cilCode,
+  cilCog,
   cilCommentSquare,
   cilCreditCard,
   cilCursor,
@@ -129,6 +130,7 @@ export const iconSubset = {
   cilChevronRight,
   cilCloudDownload,
   cilCode,
+  cilCog,
   cilCommentSquare,
   cilCreditCard,
   cilCursor,
@@ -181,7 +183,8 @@ export const iconSubset = {
   cilUser,
   cilUserFemale,
   cilUserFollow,
-  cilUserUnfollow
+  cilUserUnfollow,
+  
 };
 
 export enum IconSubset {
@@ -275,4 +278,5 @@ export enum IconSubset {
   cilUserFemale = 'cilUserFemale',
   cilUserFollow = 'cilUserFollow',
   cilUserUnfollow = 'cilUserUnfollow',
+  cilCog = 'cilCog',
 }

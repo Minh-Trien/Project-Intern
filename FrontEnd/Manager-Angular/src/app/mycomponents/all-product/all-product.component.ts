@@ -24,6 +24,8 @@ export class AllProductComponent implements OnInit{
     image: '',
     descriptions: ''
   };
+
+
   currentProduct: Product = {};
   currentIndex = -1;
   submitted = false;
@@ -166,11 +168,11 @@ export class AllProductComponent implements OnInit{
           this.handleSearch();
         }, 1000);
       }
+
       update(id:any) : void {
         this.addOrUpdate= false;
         this.liveDemoVisible = true;
         this.getId(id);
-
       }
       
        saveUpdate(id:any) : void{
@@ -204,10 +206,21 @@ export class AllProductComponent implements OnInit{
         next: (data)=>{
           this.products = data.data;
           console.log(data);
+          console.log(this.products);
           this.pageSize = data.pageSize;
         }
       })
     }
+
+    hidden(id:any) : void {
+    this.productService.hidden(id)
+    .subscribe({
+      next: (data) =>{    
+        this.handleUpdateTable()
+      }
+    })
+    
+  }
   
 }
     

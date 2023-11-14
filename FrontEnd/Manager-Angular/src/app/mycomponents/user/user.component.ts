@@ -62,7 +62,7 @@ export class UserComponent implements OnInit{
         this.userService.getAll(page)
           .subscribe({
             next: (data) => {   
-              this.users = data.data ;
+              this.users = data.data.$values ;
               this.count = data.totalItems;
               this.pageSize = data.pageSize;
               console.log(data)

@@ -7,6 +7,9 @@
     .about_img {
         margin-right: 0;
     }
+    .profile_image{
+        margin-left: 30px !important;
+    }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -29,6 +32,9 @@
     .about_img {
         margin-right: 0;
     }
+    .profile_image{
+        margin-left: 30px !important;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -37,6 +43,7 @@
     }
     .logo {
         padding-top: 4px;
+
     }
     .navigation.navbar-dark .navbar-nav .nav-link {
         padding: 9px 19px;
@@ -89,9 +96,15 @@
     .about_img {
         margin-right: 0;
     }
+    .profile_image{
+        margin-left: 50px !important;
+    }
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
+    .profile_image{
+        margin-left: 30px !important;
+    }
     ul.search {
         display: none;
     }
@@ -166,11 +179,13 @@
     .d_none {
         display: none;
     }
+    
 }
 
 @media (max-width: 575px) {
     .header {
         padding: 29px 0px;
+        background-size: 40px;
     }
     .back_re .title h2 {
         font-size: 31px;
@@ -194,6 +209,7 @@
         padding-bottom: 6px;
         float: left;
         position: relative;
+        padding-left: 40px;
     }
     .marriage_text h3 {
         font-size: 19px;
@@ -256,12 +272,28 @@
         float: right;
         border: inherit;
         margin-top: -34px;
+        margin-right: 60px;
     }
     .navigation.navbar-dark .navbar-toggler-icon {
+        margin-right: 100px;
         background: url(../images/menu_icon.png);
         background-repeat: no-repeat;
     }
     .d_none {
         display: none;
+    }
+    .cart-icon{
+        margin-right: 70px;
+        margin-top: -43px;
+        float: right;
+    }
+    .profile_image{
+        margin-top: -45px;
+        margin-left: 20px;
+    }
+    .login-button{
+    margin-left: 250px;
+    margin-top: -40px !important;
+    
     }
 }

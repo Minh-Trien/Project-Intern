@@ -1,13 +1,17 @@
 import customize from "./axios"
 
-const fetchAllProduct = (page) =>{
+const fetchAllProduct = (page) => {
     return customize.get(`/api/product/NoHidden?page=${page}`);
 }
-const fetchAllTask = () =>{
+const fetchAllTask = () => {
     return customize.get("/api/task");
 }
-const GetProductsByTaskId = ( taskid, page) =>{
+const GetProductsByTaskId = (taskid, page) => {
     return customize.get(`/api/product/task?id=${taskid}&page=${page}`, taskid, page);
+}
+
+const GetProductsById = (id) => {
+    return customize.get(`/api/product/${id}`);
 }
 
 const getSearch = (keyword, page) => {
@@ -18,4 +22,4 @@ const loginAPI = (email, password) => {
     return customize.get(`/api/login`, email, password)
 }
 
-export {fetchAllProduct,fetchAllTask, GetProductsByTaskId, getSearch, loginAPI}; 
+export { fetchAllProduct, fetchAllTask, GetProductsByTaskId, getSearch, loginAPI,GetProductsById }; 

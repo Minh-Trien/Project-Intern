@@ -16,12 +16,12 @@ namespace BLL.Services
             
         }
 
-        public (bool, int) sendOTP(string email, string forgot = null)
+        public int sendOTP(string email, string forgot = null)
         {
-            bool isSend = false;
             int OTP = 0;
+            bool isSend;
             try
-            { 
+            {
                 const string frompass = "vtysumtnfyzerewx";
                 const string subject = "VERIFY YOUR EMAIL ADDRESS";
                 var fromAddress = new MailAddress("trien112345@gmail.com");
@@ -58,11 +58,11 @@ namespace BLL.Services
                     ".form-signin {   background-color: rgb(236, 233, 233); } .ma-otp {   width: 80%;   height: 200px;   margin: auto;   padding: auto;   text-align: center;   background-color: white; } .otp-code {   padding-top: 80px; } " +
                     "h1 {   color: #86b817;   font-family: \"Nunito\", sans-serif; }\r\n</style>\r\n" +
                     "</head>\r\n" +
-                    "<body style=\"background-color: #86b817;height:80vh;\">\r\n" +
+                    "<body style=\"background-color: #FFF0F5;height:80vh;\">\r\n" +
                     "<div class=\"container\">\r\n" +
                     "<form class=\"form-signin\">\r\n" +
                     "<div class=\"text-center mb-4 m-5\" style='height:80vh; padding:20px 0;'>\r\n" +
-                    "<h1 class=\"text-primary m-0\" style='font-size:xxx-large'>\r\nABCLEARN\r\n</h1>\r\n" +
+                    "<h1 class=\"text-primary m-0\" style='font-size:xxx-large'>\r\nKAITO-SHOP\r\n</h1>\r\n" +
                     "<p style=\"font-size: 23px\"><strong>OTP verification</strong></p>\r\n" +
                      body +
                     "\r\n <p>This code must not be given to anyone in any way</p> \n <p>Your OTP:</p>\r\n" +
@@ -99,7 +99,7 @@ namespace BLL.Services
             {
                 isSend = false;
             }
-            return (isSend, OTP);
+            return ( OTP);
         }
 
         public bool sendContact(string email, string name, string contact, string subject)

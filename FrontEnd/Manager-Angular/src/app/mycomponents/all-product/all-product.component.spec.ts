@@ -5,7 +5,6 @@ import { CardModule, GridModule, TableModule, UtilitiesModule,  ButtonModule, Mo
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../icons/icon-subset';
 
-import { DocsComponentsModule } from '../../../components';
 import { AllProductComponent } from './all-product.component';
 
 describe('AllProductComponent', () => {
@@ -15,7 +14,7 @@ describe('AllProductComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [AllProductComponent],
-      imports: [ModalModule, NoopAnimationsModule, GridModule, CardModule, PopoverModule, ButtonModule, DocsComponentsModule, RouterTestingModule, TooltipModule,GridModule, CardModule, TableModule, GridModule, UtilitiesModule, DocsComponentsModule, RouterTestingModule],
+      imports: [ModalModule, NoopAnimationsModule, GridModule, CardModule, PopoverModule, ButtonModule, RouterTestingModule, TooltipModule,GridModule, CardModule, TableModule, GridModule, UtilitiesModule, RouterTestingModule],
       providers: [IconSetService]
     }).compileComponents();;
   beforeEach(() => {   

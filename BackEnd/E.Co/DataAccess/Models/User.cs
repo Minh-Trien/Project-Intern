@@ -9,9 +9,9 @@ namespace DataAccess.Models
         {
             Comments = new HashSet<Comment>();
             News = new HashSet<News>();
-            Orders = new HashSet<Order>();
+            OrderDetails = new HashSet<OrderDetail>();
+            ShoppingSessions = new HashSet<ShoppingSession>();
             Tokens = new HashSet<Token>();
-            VoucherUsers = new HashSet<VoucherUser>();
             WishLists = new HashSet<WishList>();
         }
 
@@ -23,12 +23,15 @@ namespace DataAccess.Models
         public string? Phone { get; set; }
         public string? Address { get; set; }
         public string? Role { get; set; }
+        public bool? EmailConfirm { get; set; }
+
+
 
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<News> News { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<ShoppingSession> ShoppingSessions { get; set; }
         public virtual ICollection<Token> Tokens { get; set; }
-        public virtual ICollection<VoucherUser> VoucherUsers { get; set; }
         public virtual ICollection<WishList> WishLists { get; set; }
     }
 }

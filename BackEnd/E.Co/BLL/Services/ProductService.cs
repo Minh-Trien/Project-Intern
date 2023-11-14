@@ -24,7 +24,6 @@ namespace BLL.Services
             var totalItems = await _productRepository.GetCounts();
             var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
             var products = await _productRepository.GetPaging(page, pageSize);
-
             var paginationInfo = new PaginationViewModels
             {
                 Page = page,
@@ -52,7 +51,6 @@ namespace BLL.Services
         }
         public async Task<PaginationViewModels> Sort(string sortBy, string sortOrder, int page, int pageSize)
         {
-
             var totalItems = await _productRepository.GetCounts();
             var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
             var products = await _productRepository.Sorting(sortBy, sortOrder, page, pageSize);
@@ -84,7 +82,7 @@ namespace BLL.Services
         public async Task<PaginationViewModels> GetProductByTaskId(int id, int page, int pageSize)
         {
             var products = await _productRepository.GetProductsByTaskId(id, page, pageSize);
-            var totalItems = products.Count();
+            var totalItems = await _productRepository.totalItemByTaskId(id);
             var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
             var paginationInfo = new PaginationViewModels
             {
@@ -99,9 +97,8 @@ namespace BLL.Services
 
         public async Task<PaginationViewModels> GetSearchNoHidden(string keyword, int page, int pageSize)
         {
-
             var products = await _productRepository.SearchNoHidden(keyword, page, pageSize);
-            var totalItems = products.Count();
+            var totalItems = await _productRepository.totalItemSearch(keyword);
             var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
             var paginationInfo = new PaginationViewModels
             {
@@ -113,12 +110,10 @@ namespace BLL.Services
             };
             return paginationInfo;
         }
-
         public async Task<PaginationViewModels> GetProductNoHidden( int page, int pageSize)
         {
-
             var products = await _productRepository.GetProductNoHidden( page, pageSize);
-            var totalItems = products.Count();
+            var totalItems = await _productRepository.totalItemNoHidden();
             var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
             var paginationInfo = new PaginationViewModels
             {
@@ -130,6 +125,21 @@ namespace BLL.Services
             };
             return paginationInfo;
         }
+
+        public async Task<Product> HiddenProduct(int productId)
+        {
+            var product = await _productRepository.GetIdAsync(productId);
+
+            if (product == null)
+            {
+                return null;  
+            }
+           
+            product.Hidden = !product.Hidden;
+           
+         return   await _productRepository.UpdateIdAsync(productId, product);
+        }
+
 
     }
 }

@@ -1,20 +1,117 @@
 /* CSS */
 .login-button {
     display: inline-block;
-    padding: 12px 24px;
+   
     background-color: #ffffff; /* Đổi màu nền thành Pink (hồng kem) */
     color: black;
     font-size: 16px;
     border: none;
     font-weight: bold;
     opacity: 0.7;
-    border-radius: 4px;
+    
     cursor: pointer;
     transition: background-color 0.3s;
+    width: 2cm !important;
+    height: 1cm;
   }
   
   .login-button:hover {
-    background-color: #f5ece1; /* Đổi màu nền khi hover chuột */
+    background-color: #f5e1e1; /* Đổi màu nền khi hover chuột */
     opacity: 1;
   }
   
+  .profile_image{
+    float: right;
+    width: 1.2cm;
+    height: 1.2cm;
+    border-radius: 50%;
+    overflow: hidden; 
+  }
+  .profile-container {
+    position: relative;
+}
+  .profile {
+    position: absolute;
+    top: 100%; /* Đặt top là 100% để shopping cart xuất hiện dưới cart-icon */
+    right: 0;
+    background: white;
+    width: 200px;
+    border-radius: 3px;
+    padding: 20px;
+    display: none;
+    z-index: 9999;
+  
+  .profile-header {
+    border-bottom: 1px solid #E8E8E8;
+    padding-bottom: 15px;
+    
+    .profile-total {
+      float: right;
+    }
+  }
+  
+  .profile-items {
+    
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 0px;
+    border-bottom: 1px solid #E8E8E8;
+    padding-left: 5px;
+      li {
+        margin-bottom: 0px;
+      }
+
+    img {
+      float: left;
+      margin-right: 12px;
+    }
+    
+    .item-name {
+      display: block;
+      padding-top: 10px;
+      font-size: 16px;
+    }
+    
+    .item-price {
+      color: #6394F8;
+      margin-right: 8px;
+    }
+    
+    .item-quantity {
+      color: #ABB0BE;
+    }
+  }
+   
+}
+.cart-container {
+    position: relative;
+}
+
+.profile:after {
+     bottom: 100%;
+     left: 89%;
+     border: 2px solid transparent;
+     content: " ";
+     height: 0;
+     width: 0;
+     position: absolute;
+     pointer-events: none;
+     border-bottom-color: white;
+     border-width: 8px;
+     margin-left: -8px;
+}
+
+.profile.open {
+  display: block;
+  margin-top: 55px;
+  border: 2px solid rgba(0, 0, 0, 0.158);
+ 
+}
+.logout{
+ 
+  font-family: sans-serif;
+  margin-left: 39px;
+  margin-top: -16px;
+
+ 
+}

@@ -1,30 +1,57 @@
-import React from 'react';
-import { useCart } from './CartContext';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { featchCart } from '../../redux/product/productAction';
+import { removeFromCart, updateCart } from '../../redux/product/productAction';
 
 function Cart() {
-  const { cart, removeFromCart, updateQuantity } = useCart();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(featchCart(1))
+  }, []);
 
   const handleDecrement = (itemId) => {
     const item = cart.find((item) => item.id === itemId);
     if (item.quantity > 1) {
-      updateQuantity(itemId, item.quantity - 1);
+      dispatch(updateCart(itemId, item.quantity - 1));
     }
+
   };
+  // const [cart, setCart] = useState([]);
+  let cart = useSelector(state => state.cart.cartItems)
 
   const handleIncrement = (itemId) => {
     const item = cart.find((item) => item.id === itemId);
-    updateQuantity(itemId, item.quantity + 1);
+    //  updateQuantity(itemId, item.quantity + 1);
+    dispatch(updateCart(itemId, item.quantity + 1));
   };
   const getTotalPrice = () => {
-    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    return cart.reduce((total, item) => total + item.product.price * item.quantity, 0);
   };
-  const getTotalItem = () => {
-    return cart.reduce((total, item)=> total + item.quantity, 0);
+  const getCartItemsPrice = (quantity, price) => {
+    return quantity * price;
   }
-  
-  
+  const getTotalItem = () => {
+    return cart.reduce((total, item) => total + item.quantity, 0);
+  }
+  const removeFromCarts = async (cartId) => {
+    //let res = await removeCartItem(productId);
+    dispatch(removeFromCart(cartId));
+    //   console.log(res);
+  };
+  const BackToShop = () => {
+    navigate('/product')
+  }
+  // Hàm cập nhật số lượng sản phẩm trong giỏ hàng
+  const updateQuantity = (productId, newQuantity) => {
+    const updatedCart = cart.map((item) =>
+      item.id === productId ? { ...item, quantity: newQuantity } : item
+    );
+    cart = updatedCart;
+  };
 
- return (
+  return (
     <section className="h-100 h-custom" style={{ backgroundColor: "#d2c9ff" }}>
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
@@ -43,11 +70,11 @@ function Cart() {
                       {cart.map((item) => (
                         <div key={item.id} className="row mb-4 d-flex justify-content-between align-items-center">
                           <div className="col-md-2 col-lg-2 col-xl-2">
-                            <img src={item.image} className="img-fluid rounded-3" alt={item.name} />
+                            <img src={item.product.image} className="img-fluid rounded-3" alt={item.product.name} />
                           </div>
                           <div className="col-md-3 col-lg-3 col-xl-2">
                             <h6 className="text-muted" />
-                            <h6 className="text-black mb-0">{item.name}</h6>
+                            <h6 className="text-black mb-0">{item.product.name}</h6>
                           </div>
                           <div className="col-md-3 col-lg-3 col-xl-3 d-flex">
                             <button
@@ -76,11 +103,11 @@ function Cart() {
                             </button>
                           </div>
                           <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                            <h6 className="mb-0">{item.price}</h6>
+                            <h6 className="mb-0">{getCartItemsPrice(item.quantity, item.product.price)}</h6>
                           </div>
                           <div className="col-md-1 col-lg-1 col-xl-1 text-end">
-                            <a href="#" className="text-muted" onClick={() => removeFromCart(item.id)}>
-                              <img src="./assets/images/trash-icon.jpg" alt="Remove" />
+                            <a href="#" className="text-muted" >
+                              <img src="./assets/images/trash-icon.jpg" alt="Remove" onClick={() => removeFromCarts(item.id)} />
                             </a>
                           </div>
                         </div>
@@ -90,7 +117,7 @@ function Cart() {
 
                       <div className="pt-5">
                         <h6 className="mb-0">
-                          <a href="/product" className="text-body">
+                          <a onClick={BackToShop} className="text-body">
                             <i className="fas fa-long-arrow-alt-left me-2" />
                             Back to shop
                           </a>
@@ -101,62 +128,62 @@ function Cart() {
 
                   {/* ... Phần thông tin đặt hàng ở đây ... */}
                   <div className="col-lg-4 bg-grey">
-                <form action="" method="post" encType="multipart/form-data">
-                  <div className="p-5">
-                    <h3 className="fw-bold mb-5 mt-2 pt-1">Summary</h3>
-                    <hr className="my-4" />
-                    <div className="d-flex justify-content-between mb-4">
-                      <h4 className="text-uppercase">Items :  </h4>
-                      <h4>{getTotalItem()}</h4>
-                    </div>
-                    <h5 className="text-uppercase mb-3">Shipping</h5>
-                    <div className="mb-4 pb-2">
-                      <select className="form-select">
-                        <option value={1}>Standard-Delivery- €5.00</option>
-                        <option value={2}>Two</option>
-                        <option value={3}>Three</option>
-                        <option value={4}>Four</option>
-                      </select>
-                    </div>
-                    <h5 className="text-uppercase mb-3">Give code</h5>
-                    <div className="mb-5">
-                      <div className="form-outline">
+                    <form action="" method="post" encType="multipart/form-data">
+                      <div className="p-5">
+                        <h3 className="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                        <hr className="my-4" />
+                        <div className="d-flex justify-content-between mb-4">
+                          <h4 className="text-uppercase">Items :  </h4>
+                          <h4>{getTotalItem()}</h4>
+                        </div>
+                        <h5 className="text-uppercase mb-3">Shipping</h5>
+                        <div className="mb-4 pb-2">
+                          <select className="form-select">
+                            <option value={1}>Standard-Delivery- €5.00</option>
+                            <option value={2}>Two</option>
+                            <option value={3}>Three</option>
+                            <option value={4}>Four</option>
+                          </select>
+                        </div>
+                        <h5 className="text-uppercase mb-3">Give code</h5>
+                        <div className="mb-5">
+                          <div className="form-outline">
+                            <input
+                              type="text"
+                              id="form3Examplea2"
+                              className="form-control form-control-lg"
+                            />
+                            <label className="form-label" htmlFor="form3Examplea2">
+                              Enter your code
+                            </label>
+                          </div>
+                        </div>
+                        <hr className="my-4" />
+                        <div className="d-flex justify-content-between mb-5">
+                          <h5 className="text-uppercase">Total price: </h5>
+                          <h4>{getTotalPrice()}$</h4>
+                        </div>
                         <input
-                          type="text"
-                          id="form3Examplea2"
-                          className="form-control form-control-lg"
+                          id="coursepayment"
+                          type="hidden"
+                          name="IdCart"
+                          defaultValue=""
                         />
-                        <label className="form-label" htmlFor="form3Examplea2">
-                          Enter your code
-                        </label>
+                        <button
+                          type="submit"
+                          className="btn btn-dark btn-block btn-lg"
+                          data-mdb-ripple-color="dark"
+                        >
+                          Payment
+                        </button>
                       </div>
-                    </div>
-                    <hr className="my-4" />
-                    <div className="d-flex justify-content-between mb-5">
-                      <h5 className="text-uppercase">Total price: </h5>  
-                      <h4>{getTotalPrice()}</h4>
-                    </div>
-                    <input
-                      id="coursepayment"
-                      type="hidden"
-                      name="IdCart"
-                      defaultValue=""
-                    />
-                    <button
-                      type="submit"
-                      className="btn btn-dark btn-block btn-lg"
-                      data-mdb-ripple-color="dark"
-                    >
-                      Payment
-                    </button>
+                    </form>
                   </div>
-                </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
     </section>
   );

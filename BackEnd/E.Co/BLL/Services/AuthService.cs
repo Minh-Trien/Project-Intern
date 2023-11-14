@@ -3,6 +3,7 @@ using DataAccess.Repository;
 using DataAccess.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -23,17 +24,24 @@ namespace BLL.Services
         private readonly UserRepository _userRepository;
         private readonly IConfiguration _configuration;
         private readonly TokenRepository _tokenRepository;
-        public AuthService(UserRepository userRepository, IConfiguration configuration, TokenRepository tokenRepository)
+        private readonly Email _email;
+
+        public AuthService(UserRepository userRepository, IConfiguration configuration, TokenRepository tokenRepository, Email email)
         {
             _userRepository = userRepository;
             _tokenRepository = tokenRepository;
             _configuration = configuration;
+            _email = email;
             
         }
 
       
         public static string EncryptMD5(string input)
             {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input), "Input string cannot be null.");
+            }
             using (MD5 md5 = MD5.Create())
                 {
                     byte[] inputBytes = Encoding.ASCII.GetBytes(input);
@@ -87,7 +95,7 @@ namespace BLL.Services
                 FirstName = user.FirstName,
                 LastName = user.LastName,
             };
-            await  _userRepository.InsertAsync(userRegister);
+            await _userRepository.InsertAsyncReturn(userRegister);
             return userRegister;
         }
 
@@ -102,12 +110,12 @@ namespace BLL.Services
                 {
                     new Claim(ClaimTypes.Name, user.LastName),
                     new Claim(ClaimTypes.Email, user.Email),
-                    new Claim("Email", user.Email),
+                    new Claim(ClaimTypes.Role, user.Role),
                 }),
                 IssuedAt = DateTime.UtcNow,
                 Issuer = _configuration["JWT:Issuer"],
                 Audience = _configuration["JWT:Audience"],
-                Expires = DateTime.UtcNow.AddSeconds(20),
+                Expires = DateTime.UtcNow.AddMinutes(20),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
             };
 
@@ -144,7 +152,5 @@ namespace BLL.Services
                 return Convert.ToBase64String(random);
             }
         }
-
-
     }
 }

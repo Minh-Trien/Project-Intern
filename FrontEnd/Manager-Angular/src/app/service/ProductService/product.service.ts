@@ -38,5 +38,9 @@ export class ProductService {
     return this.httpClient.get<any>(`${baseUrl}product/sort?sortBy=${sortBy}&sortOrder=${sortOrder}&page=${page}`).pipe();
   }
 
+  hidden (id:any): Observable<any> {
+    return this.httpClient.put<any>(`${baseUrl}product/${id}/hidden`, id).pipe();
+  }
+
 }
 

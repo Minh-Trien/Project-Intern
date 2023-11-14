@@ -7,9 +7,12 @@ namespace DataAccess.Models
     {
         public Product()
         {
-            OrderDetails = new HashSet<OrderDetail>();
+            CartItems = new HashSet<CartItem>();
+            OrderItems = new HashSet<OrderItem>();
             WishLists = new HashSet<WishList>();
         }
+
+
 
         public int Id { get; set; }
         public string? Name { get; set; }
@@ -20,8 +23,11 @@ namespace DataAccess.Models
         public int? TaskId { get; set; }
         public int? Quanlity { get; set; }
 
+
+
         public virtual Task? Task { get; set; }
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<CartItem> CartItems { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
         public virtual ICollection<WishList> WishLists { get; set; }
     }
 }

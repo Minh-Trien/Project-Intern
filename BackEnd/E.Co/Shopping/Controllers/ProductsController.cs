@@ -20,19 +20,16 @@ namespace Shopping.Controllers
         [HttpGet()]
         public async Task<ActionResult<PaginationViewModels>> GetProduct(
             [FromQuery] int page = 1, // Trang mặc định là trang 1
-            [FromQuery] int pageSize = 10) // Số lượng mục trên mỗi trang mặc định là 10
+            [FromQuery] int pageSize = 8) // Số lượng mục trên mỗi trang mặc định là 10
         {
          return await _productService.GetProductPaging(page, pageSize);
-
         }
         
         [HttpGet("NoHidden")]
         public async Task<ActionResult<PaginationViewModels>> GetProductNoHidden(
             [FromQuery] int page = 1, // Trang mặc định là trang 1
-            [FromQuery] int pageSize = 6) // Số lượng mục trên mỗi trang mặc định là 10
+            [FromQuery] int pageSize = 8) // Số lượng mục trên mỗi trang mặc định là 10
         {
-
-
             return await _productService.GetProductNoHidden(page, pageSize);
         }
 
@@ -70,42 +67,23 @@ namespace Shopping.Controllers
                 return BadRequest(ModelState);
             }
                 return  await _productService.Update(id, Product);
-   
         }
 
-        /*        // PUT api/product/{id}/hidden
-                [HttpPut("{id}/hidden")]
-                public async Task<IActionResult> UpdateProductHidden(int id)
-                {
-                    var product = await _GetProductByIdAsync(id);
-
-                    if (product == null)
-                    {
-                        return NotFound(); // Trả về HTTP 404 Not Found nếu không tìm thấy sản phẩm
-                    }
-
-                    // Cập nhật giá trị 'hidden' của sản phẩm
-                    product.Hidden = !product.Hidden;
-                    // Lưu thay đổi vào cơ sở dữ liệu
-                    _context.Entry(product).State = EntityState.Modified;
-
-                    try
-                    {
-                        await _context.SaveChangesAsync();
-                        return Ok(); // Trả về HTTP 200 OK sau khi cập nhật thành công
-                    }
-                    catch (DbUpdateConcurrencyException)
-                    {
-                        if (!ProductService.Instance.ProductExists(id))
-                        {
-                            return NotFound(); // Trả về HTTP 404 Not Found nếu không tìm thấy sản phẩm
-                        }
-                        else
-                        {
-                            throw;
-                        }
-                    }
-                }*/
+        // PUT api/product/{id}/hidden
+        [HttpPut("{id}/hidden")]
+        public async Task<IActionResult> UpdateProductHidden(int id)
+        {
+         var product = await  _productService.HiddenProduct(id);
+            if(product != null)
+            {
+                return Ok(product.Hidden);
+            }
+            else
+            {
+                return NotFound();
+            }
+            
+        }
         //api/product/sort
         [HttpGet("sort")]
         public async Task<ActionResult<PaginationViewModels>> SortProducts(
@@ -130,7 +108,7 @@ namespace Shopping.Controllers
         public async Task<ActionResult<PaginationViewModels>> GetSearchNoHidden(
         [FromQuery] string keyword,
         [FromQuery] int page = 1, // Trang mặc định là trang 1
-        [FromQuery] int pageSize = 6)
+        [FromQuery] int pageSize = 8)
         {
           return  await _productService.GetSearchNoHidden(keyword, page, pageSize);
         }
@@ -139,7 +117,7 @@ namespace Shopping.Controllers
         public async Task<ActionResult<PaginationViewModels>> GetProductByTaskId(
             int id,
             [FromQuery] int page = 1, // Trang mặc định là trang 1
-            [FromQuery] int pageSize = 6 ) // Số lượng mục trên mỗi trang mặc định là 10
+            [FromQuery] int pageSize = 8 ) // Số lượng mục trên mỗi trang mặc định là 10
         {
            return await _productService.GetProductByTaskId(id, page, pageSize);
         }

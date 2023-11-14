@@ -5,13 +5,20 @@ namespace DataAccess.Models
 {
     public partial class OrderDetail
     {
-        public int Id { get; set; }
-        public int? ProductId { get; set; }
-        public int? OrderId { get; set; }
-        public int? Quanlity { get; set; }
-        public decimal? UnitPrice { get; set; }
+        public OrderDetail()
+        {
+            OrderItems = new HashSet<OrderItem>();
+        }
 
-        public virtual Order? Order { get; set; }
-        public virtual Product? Product { get; set; }
+
+
+        public int Id { get; set; }
+        public int? UserId { get; set; }
+        public decimal? Total { get; set; }
+        public int? PaymentId { get; set; }
+        public byte[]? CreateAt { get; set; }
+
+        public virtual User? User { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
     }
 }

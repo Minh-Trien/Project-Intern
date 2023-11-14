@@ -8,6 +8,7 @@ import { TableModule, UtilitiesModule, ModalModule } from '@coreui/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+
 // Import routing module
 import { AppRoutingModule } from './app-routing.module';
 

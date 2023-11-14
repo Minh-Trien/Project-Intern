@@ -1,27 +1,59 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Loading from './Loading';
 import CartIcon from '../Cart/CartIcon';
 import '../assets/header.css'
+import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { handleLogoutRedux } from '../../redux/users/userAction';
+import { useNavigate } from 'react-router-dom';
+import { handleRefreshRedux } from '../../redux/users/userAction'
+import Dropdown from 'react-bootstrap/Dropdown';
+import { featchCart, fetchProducts } from '../../redux/product/productAction';
 function Header() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const account = useSelector(state => state.user.account);
+
+  const Logout = async () => {
+    dispatch(handleLogoutRedux());
+  }
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const toggleProfile = () => {
+    setIsProfileOpen(!isProfileOpen);
+  };
+  useEffect(() => {
+    if (account && account.auth === false && window.location.pathname !== '/login' &&  '/register') {
+      navigate('/');
+    }
+  }, [account])
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser && storedUser.accessToken) {
+      dispatch(handleRefreshRedux());
+      dispatch(featchCart(1));
+      dispatch(fetchProducts(1));
+    }
+  }, [dispatch]);
   return (
     <div>
       <Loading></Loading>
       <header className="full_bg">
         <div className="header">
-          <div className="container">
+          <div className="">
             <div className="row">
               <div className="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
                 <div className="full">
                   <div className="center-desk">
-                    <div className="logo">
+                    <div className="logo ml-3">
                       {/* Use NavLink for navigation */}
                       <NavLink className="nav-link" to='/'>2Rings</NavLink>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+              <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 ">
                 {/* Your navigation menu */}
                 {/* Add NavLink for each menu item */}
                 <nav className="navigation navbar navbar-expand-md navbar-dark">
@@ -36,7 +68,7 @@ function Header() {
                   >
                     <span className="navbar-toggler-icon" />
                   </button>
-                  <div className="collapse navbar-collapse" id="navbarsExample04">
+                  <div className="collapse navbar-collapse " id="navbarsExample04">
                     <ul className="navbar-nav mr-auto">
                       <li className="nav-item">
                         <NavLink className="nav-link" to='/'>Home</NavLink>
@@ -44,11 +76,14 @@ function Header() {
                       <li className="nav-item">
                         <NavLink className="nav-link" to='/product'>Product</NavLink>
                       </li>
-                      <li className="nav-item">
-                        <NavLink className="nav-link" to='/cart'>
-                          Cart
-                        </NavLink>
-                      </li>
+
+
+                      {account.auth ? (
+                        <li className="nav-item">
+                          <NavLink className="nav-link" to='/cart'>
+                            Cart
+                          </NavLink>
+                        </li>) : (<></>)}
                       <li className="nav-item">
                         <NavLink className="nav-link" to='/newsFeed'>
                           NewsFeed
@@ -59,32 +94,69 @@ function Header() {
                           Contact Us
                         </NavLink>
                       </li>
-                      <CartIcon></CartIcon>
-                      <li className="nav-item">
-                        <NavLink className="nav-link" to='/Login'>
+
+                      {/* <li className="nav-item">
+                      {!account.auth? ( <NavLink className="nav-link" to='/Login'>
                          <button className='login-button'>Login</button> 
-                        </NavLink>
-                      </li>
+                        </NavLink>) : (<NavLink className="nav-link">
+                         <button 
+                         className='login-button'
+                          onClick={Logout}
+                         >Logout</button> 
+                        </NavLink>)}
+
+                      </li> */}
                     </ul>
-                    
+
                   </div>
                 </nav>
               </div>
+              <div className='col-xl-3 col-lg-3 col-md-3 col-sm-3  row'>
+
+                {!account.auth ? (<button className='login-button' ><NavLink className="nav-link" to='/login'>Login</NavLink></button>) : (
+                  <>
+                    <div className='col-xl-6 col-lg-6 col-md-6 col-sm-6'>
+                      <CartIcon></CartIcon>
+                    </div>
+                    <div className=' col-xl-6 col-lg-6 col-md-6 col-sm-6 '>
+                      <div className='profile-container '>
+                        <div className='profile_image' >
+                          <NavLink className="nav-link" ><img src="./assets/images/saya.png" alt="#" onClick={toggleProfile} /></NavLink>
+                        </div>
+                        <div className={`profile ${isProfileOpen ? 'open' : ''}`}>
+                          <div className="profile-header">
+                            <span className="main-color-text" />
+                            Hello {account.email}
+                            <div className="profile-total">
+                              <span className="lighter-text"></span>
+                              <span className="main-color-text" />
+                            </div>
+                          </div>
+                          <ul className="profile-items">
+                            <li className="clearfix">
+                              <i className="fa-solid fa-user" ><NavLink className="nav-link logout" >Profile</NavLink></i>
+                            </li>
+                          </ul>
+                          <ul className="profile-items">
+                            <li className="clearfix">
+                              <i className="fa-solid fa-right-from-bracket "><NavLink className="nav-link logout" onClick={Logout} >Logout</NavLink></i>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
+
+
+
+              </div>
+
             </div>
           </div>
         </div>
       </header>
-      <div className="section">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 offset-md-2 col-sm-8 offset-sm-2">
-              <div className="play_btn text_align_center">
-                {/* Your content */}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
     </div>
   );
 }

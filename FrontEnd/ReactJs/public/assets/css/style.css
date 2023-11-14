@@ -267,8 +267,8 @@ button {
 
 .header {
      width: 100%;
-     height: 90px;
-     padding: 29px 20px;
+     /* height: 0px; */  
+     padding: 10px 20px;
 }
 
 .logo a {
@@ -276,6 +276,7 @@ button {
      line-height: 25px;
      color: #fff;
      font-weight: bold;
+     margin-top: 10px;
 }
 
 
@@ -284,7 +285,7 @@ button {
 .navigation.navbar {
      float: right;
      padding: 0;
-     padding-top: 2px;
+     padding-top: 8px;
 }
 
 .navigation.navbar-dark .navbar-nav .nav-link {
@@ -327,7 +328,7 @@ ul.search li a:hover {
 /** banner section **/
 
 .full_bg {
-     background: url(../images/banner2.jpg);
+     background-color: #ff141417;
      background-size: 100% 100%;
      background-position: center;
      background-repeat: no-repeat;
@@ -517,7 +518,7 @@ ul.search li a:hover {
 }
 
 .plan_text {
-     background-color: #f8d98f;
+     background-color: #f88f8f60;
      cursor: pointer;
      padding: 49px 40px;
 }
@@ -556,7 +557,7 @@ ul.search li a:hover {
 }
 
 #ho_plan:hover.plan_text h3 {
-     color: #fff;
+     color: #ffffff;
      transition: ease-in all 0.5s;
 }
 
@@ -1095,6 +1096,7 @@ ul.social_icon li a i:hover {
    .shopping-cart-items {
      
      padding-top: 20px;
+     padding-left: 0px;
  
        li {
          margin-bottom: 18px;
@@ -1166,8 +1168,10 @@ ul.social_icon li a i:hover {
  .cart-icon {
      color: #515783;
      font-size: 24px;
-     margin-right: 7px;
-     float: left;
+     /* margin-right: 7px; */
+    float: right;
+    justify-content: space-between;
+     margin-top: 5px;
  }
  
  
@@ -1177,12 +1181,20 @@ ul.social_icon li a i:hover {
    clear: both;
  }
  .shopping-cart.open {
+     border: 2px solid rgba(0, 0, 0, 0.158);
      display: block;
-     /* Hiển thị giỏ hàng khi có lớp "open" */
+     margin-top: 54px;
+     background-color: #ffffff;
    }
-
+.input-search{
+     width: 30% !important;
+}
    
-   
+.categories{
+     width: 50%;
+     border: 2px solid rgba(56, 52, 52, 0.445) !important;
+     
+}   
    
    
    
