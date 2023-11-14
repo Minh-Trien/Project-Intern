@@ -1,4 +1,4 @@
-import customize from "./axios"
+import customize from "./axiosProduct"
 
 const AddToCart = (sessionId,productId,quantity) => {
     const cartItem = {

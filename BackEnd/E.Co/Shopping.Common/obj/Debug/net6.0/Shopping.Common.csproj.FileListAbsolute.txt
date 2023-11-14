@@ -1,0 +1,15 @@
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.Common\bin\Debug\net6.0\Shopping.Common.deps.json
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.Common\bin\Debug\net6.0\Shopping.Common.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.Common\bin\Debug\net6.0\Shopping.Common.pdb
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.Common\bin\Debug\net6.0\Shopping.Models.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.Common\bin\Debug\net6.0\Shopping.Models.pdb
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.Common\obj\Debug\net6.0\Shopping.Common.csproj.AssemblyReference.cache
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.Common\obj\Debug\net6.0\Shopping.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.Common\obj\Debug\net6.0\Shopping.Common.AssemblyInfoInputs.cache
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.Common\obj\Debug\net6.0\Shopping.Common.AssemblyInfo.cs
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.Common\obj\Debug\net6.0\Shopping.Common.csproj.CoreCompileInputs.cache
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.Common\obj\Debug\net6.0\Shopping.Common.csproj.CopyComplete
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.Common\obj\Debug\net6.0\Shopping.Common.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.Common\obj\Debug\net6.0\refint\Shopping.Common.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.Common\obj\Debug\net6.0\Shopping.Common.pdb
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.Common\obj\Debug\net6.0\ref\Shopping.Common.dll

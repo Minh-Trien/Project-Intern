@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {  fetchAllTask } from '../../Service/ProductService';
+import {  fetchAllTask } from '../../Service/productService';
 import ReactPaginate from 'react-paginate';
 import { debounce } from "lodash";
 import {  fetchProducts, featchByTaskId, searchProduct, addToCart , updateCart, fetchSingleProduct} from '../../redux/product/productAction';
@@ -118,7 +118,7 @@ function Product() {
                 </ul>
               </div>
             </div>
-            <div className='col-md-7'>
+            <div className='col-md-8'>
               <div className='my-3 mb-5 '>
                 <input
                   type='text'

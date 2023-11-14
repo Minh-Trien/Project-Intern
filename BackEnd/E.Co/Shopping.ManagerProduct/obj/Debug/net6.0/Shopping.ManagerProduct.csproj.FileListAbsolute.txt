@@ -1,0 +1,17 @@
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\obj\Debug\net6.0\Shopping.ManagerProduct.csproj.AssemblyReference.cache
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\obj\Debug\net6.0\Shopping.ManagerProduct.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\obj\Debug\net6.0\Shopping.ManagerProduct.AssemblyInfoInputs.cache
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\obj\Debug\net6.0\Shopping.ManagerProduct.AssemblyInfo.cs
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\obj\Debug\net6.0\Shopping.ManagerProduct.csproj.CoreCompileInputs.cache
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\bin\Debug\net6.0\Shopping.ManagerProduct.deps.json
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\bin\Debug\net6.0\Shopping.ManagerProduct.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\bin\Debug\net6.0\Shopping.ManagerProduct.pdb
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\bin\Debug\net6.0\Shopping.Common.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\bin\Debug\net6.0\Shopping.Models.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\bin\Debug\net6.0\Shopping.Common.pdb
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\bin\Debug\net6.0\Shopping.Models.pdb
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\obj\Debug\net6.0\Shopping.ManagerProduct.csproj.CopyComplete
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\obj\Debug\net6.0\Shopping.ManagerProduct.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\obj\Debug\net6.0\refint\Shopping.ManagerProduct.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\obj\Debug\net6.0\Shopping.ManagerProduct.pdb
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\obj\Debug\net6.0\ref\Shopping.ManagerProduct.dll

@@ -1,0 +1,17 @@
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerUser\bin\Debug\net6.0\Shopping.ManagerUser.deps.json
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerUser\bin\Debug\net6.0\Shopping.ManagerUser.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerUser\bin\Debug\net6.0\Shopping.ManagerUser.pdb
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerUser\bin\Debug\net6.0\Shopping.Common.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerUser\bin\Debug\net6.0\Shopping.Models.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerUser\bin\Debug\net6.0\Shopping.Common.pdb
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerUser\bin\Debug\net6.0\Shopping.Models.pdb
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerUser\obj\Debug\net6.0\Shopping.ManagerUser.csproj.AssemblyReference.cache
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerUser\obj\Debug\net6.0\Shopping.ManagerUser.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerUser\obj\Debug\net6.0\Shopping.ManagerUser.AssemblyInfoInputs.cache
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerUser\obj\Debug\net6.0\Shopping.ManagerUser.AssemblyInfo.cs
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerUser\obj\Debug\net6.0\Shopping.ManagerUser.csproj.CoreCompileInputs.cache
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerUser\obj\Debug\net6.0\Shopping.ManagerUser.csproj.CopyComplete
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerUser\obj\Debug\net6.0\Shopping.ManagerUser.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerUser\obj\Debug\net6.0\refint\Shopping.ManagerUser.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerUser\obj\Debug\net6.0\Shopping.ManagerUser.pdb
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerUser\obj\Debug\net6.0\ref\Shopping.ManagerUser.dll

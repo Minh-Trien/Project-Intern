@@ -1,4 +1,4 @@
-import customize from "./axios"
+import customize from "./axiosProduct"
 
 const fetchAllProduct = (page) => {
     return customize.get(`/api/product/NoHidden?page=${page}`);

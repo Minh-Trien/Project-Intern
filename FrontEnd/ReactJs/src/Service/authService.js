@@ -1,4 +1,4 @@
-import customize from "./axios"
+import customize from "./axiosAuth"
 
 const login = (email, password, rememberme) =>{
     return customize.post(`/api/auth/login`,{email, password,rememberme} );

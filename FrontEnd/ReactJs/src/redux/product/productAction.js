@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { fetchAllProduct, GetProductsByTaskId, getSearch, fetchAllTask, GetProductsById } from '../../Service/ProductService';
+import { fetchAllProduct, GetProductsByTaskId, getSearch, fetchAllTask, GetProductsById } from '../../Service/productService';
 import { AddToCart, featchCarts, updateCarts, removeCartItem } from '../../Service/cartService';
 import {
     FETCH_PRODUCTS,
