@@ -13,9 +13,11 @@ import {
 
         account: {
             email: '',
-            auth: ''         
-            },
-        OTP : null
+            auth: '',
+            role: '',         
+            sessionId: '',    
+        },
+        
     };
 
     const userReducer = (state = INITIAL_STATE, action) => {
@@ -31,7 +33,9 @@ import {
                     ...state,
                     account: {
                     email: action.data.email,
-                    auth : true
+                    auth : true,
+                    role : action.data.role,
+                    sessionId : action.data.sessionId
                 }
                };
 
@@ -46,11 +50,13 @@ import {
             
             case FETCH_USER_LOGOUT:
                 localStorage.removeItem('token');
+                localStorage.removeItem('email');
                 return {
                   ...state,
                   account: {
                     email: '',
                     auth: false,
+                    role: ""
                     }
                };
                
@@ -59,8 +65,10 @@ import {
                 return {
                   ...state,
                   account: {
-                    email: '',
                     auth: true,
+                    email : action.data.email,
+                    role : 'user',
+                    sessionId : action.data.sessionId
                     }
                };
 

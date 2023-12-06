@@ -13,6 +13,8 @@ import ProductDetail from './Product/ProductDetail';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ConfirmEmail from './Login/ConfirmEmail';
+import Profile from './Profile/Profile';
+//import NavBar from './Layout/NavBar';
 function Main() {
   return (
     <div>
@@ -39,6 +41,7 @@ function Main() {
         <Route path='/register' element={<Register />} />
         <Route path='/confirmEmail' element={<ConfirmEmail />} />
         <Route path='/detailProduct' element={<ProductDetail />} />
+        <Route path='/profile' element={<Profile/>} />
       </Routes>
 
       <Footer />

@@ -1,7 +1,7 @@
 <c-row ngPreserveWhitespaces>
     <c-col xs="12">
         <div class="header-table my-2">
-          <span class="mx-5"><c-input-group class="flex-nowrap">
+          <span class=""><c-input-group class="flex-nowrap">
             <span cInputGroupText id="addon-wrapping">Search</span>
             <input 
             aria-describedby="addon-wrapping"
@@ -172,17 +172,13 @@
                   <td>{{user.phone}}</td>
                   <td>{{user.address}}</td>
                   <td>
-                    <button
-                    cButton color="info" 
-                    variant="outline"
-                    class=""
-                    (click)="update(user.id)"
-                    >Update</button>
-                    <button
-                    cButton color="success" 
-                    variant="outline"
-                    class=""
-                    >Hidden</button>
+                    <a (click)="update(user.id)" >
+                      <svg 
+                      cIcon name="cil-cog" 
+                      size="lg"                       
+                      ></svg> 
+                      </a>
+                    
                   </td>
                 </tr>
                 </tbody>

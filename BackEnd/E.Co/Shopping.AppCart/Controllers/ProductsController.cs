@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ namespace Shopping.Controllers
             _productService = productService;         
         }
 
+        [Authorize(Roles = "user")]
         [HttpGet()]
         public async Task<ActionResult<PaginationViewModels>> GetProduct(
             [FromQuery] int page = 1, // Trang mặc định là trang 1
@@ -127,108 +129,106 @@ namespace Shopping.Controllers
 
 
 
-        /*
-                [HttpPost("import")]
-                public async Task<IActionResult> ImportFile(IFormFile file)
+
+    /*    [HttpPost("import")]
+        public async Task<IActionResult> ImportFile(IFormFile file)
+        {
+            try
+            {
+                if (file == null || file.Length <= 0)
                 {
-                    try
-                    {
-                        if (file == null || file.Length <= 0)
-                        {
-                            return BadRequest("Vui lòng chọn tệp Excel để import.");
-                        }
-
-                        using (var package = new ExcelPackage(file.OpenReadStream()))
-                        {
-                            var worksheet = package.Workbook.Worksheets[0]; // Lấy trang tính toán đầu tiên
-
-                            var productList = new List<Product>(); // Danh sách sản phẩm để lưu dữ liệu từ Excel
-
-                            for (int row = 2; row <= worksheet.Dimension.End.Row; row++) // Bắt đầu từ hàng thứ 2 (do hàng đầu tiên là tiêu đề)
-                            {
-                                var product = new Product
-                                {
-                                    Name = worksheet.Cells[row, 1].Value.ToString(), // Đọc dữ liệu từ cột 1
-                                    Descriptions = worksheet.Cells[row, 1].Value.ToString(),                                   // Đọc các cột khác và gán giá trị cho thuộc tính của product
-                                                                                                                                  // Ví dụ: product.TaskId = worksheet.Cells[row, 2].Value.ToString()                                                                                       // Tiếp tục cho các cột còn lại
-                                };
-
-                                productList.Add(product);
-                            }
-
-                            // Lưu danh sách sản phẩm vào cơ sở dữ liệu
-                            _context.Products.AddRange(productList);
-                            await _context.SaveChangesAsync();
-
-                            return Ok("Import thành công.");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        return StatusCode(StatusCodes.Status500InternalServerError, "Lỗi trong quá trình import: " + ex.Message);
-                    }
-                }
-                [HttpGet("export")]
-                public async Task<IActionResult> ExportFile()
-                {
-                    try
-                    {
-                        var productList = await _context.Products.ToListAsync(); // Lấy danh sách sản phẩm từ cơ sở dữ liệu
-
-                        if (productList == null || productList.Count == 0)
-                        {
-                            return BadRequest("Không có dữ liệu để xuất.");
-                        }
-
-                        using (var package = new ExcelPackage())
-                        {
-                            var worksheet = package.Workbook.Worksheets.Add("Danh sách sản phẩm"); // Tạo một trang tính mới
-
-                            // Thêm tiêu đề cho các cột
-                            worksheet.Cells[1, 1].Value = "name";
-                            worksheet.Cells[1, 2].Value = "description";
-                            worksheet.Cells[1, 3].Value = "price";
-                            worksheet.Cells[1, 4].Value = "image";
-                            worksheet.Cells[1, 5].Value = "hidden";
-                            worksheet.Cells[1, 6].Value = "taskId";
-                            worksheet.Cells[1, 7].Value = "Quanlity";
-                            // Thêm tiêu đề cho các cột khác (nếu cần)
-
-                            int row = 2; // Bắt đầu từ hàng thứ 2 để điền dữ liệu
-                            foreach (var product in productList)
-                            {
-                                worksheet.Cells[row, 1].Value = product.Name; // Điền dữ liệu vào cột 1
-                                worksheet.Cells[row, 2].Value = product.Descriptions;
-                                worksheet.Cells[row, 3].Value = product.Price;
-                                worksheet.Cells[row, 4].Value = product.Image;
-                                worksheet.Cells[row, 5].Value = product.Hidden;
-                                worksheet.Cells[row, 6].Value = product.TaskId;
-                                worksheet.Cells[row, 7].Value = product.Quanlity;
-                                row++;
-                            }
-
-                            // Lưu tệp Excel vào MemoryStream
-                            var memoryStream = new MemoryStream();
-                            package.SaveAs(memoryStream);
-                            memoryStream.Position = 0;
-
-                            // Trả về tệp Excel dưới dạng FileResult
-                            var fileName = $"DanhSachSanPham_{DateTime.Now:yyyyMMddHHmmss}.xlsx";
-                            return File(memoryStream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        return StatusCode(StatusCodes.Status500InternalServerError, "Lỗi trong quá trình xuất dữ liệu: " + ex.Message);
-                    }
+                    return BadRequest("Vui lòng chọn tệp Excel để import.");
                 }
 
+                using (var package = new ExcelPackage(file.OpenReadStream()))
+                {
+                    var worksheet = package.Workbook.Worksheets[0]; // Lấy trang tính toán đầu tiên
 
-            */
+                    var productList = new List<Product>(); // Danh sách sản phẩm để lưu dữ liệu từ Excel
+
+                    for (int row = 2; row <= worksheet.Dimension.End.Row; row++) // Bắt đầu từ hàng thứ 2 (do hàng đầu tiên là tiêu đề)
+                    {
+                        var product = new Product
+                        {
+                            Name = worksheet.Cells[row, 1].Value.ToString(), // Đọc dữ liệu từ cột 1
+                            Descriptions = worksheet.Cells[row, 1].Value.ToString(),                                   // Đọc các cột khác và gán giá trị cho thuộc tính của product
+                                                                                                                       // Ví dụ: product.TaskId = worksheet.Cells[row, 2].Value.ToString()                                                                                       // Tiếp tục cho các cột còn lại
+                        };
+
+                        productList.Add(product);
+                    }
+
+                    // Lưu danh sách sản phẩm vào cơ sở dữ liệu
+                    _context.Products.AddRange(productList);
+                    await _context.SaveChangesAsync();
+
+                    return Ok("Import thành công.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Lỗi trong quá trình import: " + ex.Message);
+            }
+        }
+
+
+        [HttpGet("export")]
+        public async Task<IActionResult> ExportFile()
+        {
+            try
+            {
+                var productList = await _context.Products.ToListAsync(); // Lấy danh sách sản phẩm từ cơ sở dữ liệu
+
+                if (productList == null || productList.Count == 0)
+                {
+                    return BadRequest("Không có dữ liệu để xuất.");
+                }
+
+                using (var package = new ExcelPackage())
+                {
+                    var worksheet = package.Workbook.Worksheets.Add("Danh sách sản phẩm"); // Tạo một trang tính mới
+
+                    // Thêm tiêu đề cho các cột
+                    worksheet.Cells[1, 1].Value = "name";
+                    worksheet.Cells[1, 2].Value = "description";
+                    worksheet.Cells[1, 3].Value = "price";
+                    worksheet.Cells[1, 4].Value = "image";
+                    worksheet.Cells[1, 5].Value = "hidden";
+                    worksheet.Cells[1, 6].Value = "taskId";
+                    worksheet.Cells[1, 7].Value = "Quanlity";
+                    // Thêm tiêu đề cho các cột khác (nếu cần)
+
+                    int row = 2; // Bắt đầu từ hàng thứ 2 để điền dữ liệu
+                    foreach (var product in productList)
+                    {
+                        worksheet.Cells[row, 1].Value = product.Name; // Điền dữ liệu vào cột 1
+                        worksheet.Cells[row, 2].Value = product.Descriptions;
+                        worksheet.Cells[row, 3].Value = product.Price;
+                        worksheet.Cells[row, 4].Value = product.Image;
+                        worksheet.Cells[row, 5].Value = product.Hidden;
+                        worksheet.Cells[row, 6].Value = product.TaskId;
+                        worksheet.Cells[row, 7].Value = product.Quanlity;
+                        row++;
+                    }
+
+                    // Lưu tệp Excel vào MemoryStream
+                    var memoryStream = new MemoryStream();
+                    package.SaveAs(memoryStream);
+                    memoryStream.Position = 0;
+
+                    // Trả về tệp Excel dưới dạng FileResult
+                    var fileName = $"DanhSachSanPham_{DateTime.Now:yyyyMMddHHmmss}.xlsx";
+                    return File(memoryStream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Lỗi trong quá trình xuất dữ liệu: " + ex.Message);
+            }
+        }
+*/
+
+
     }
-
-
-
-
 }
 

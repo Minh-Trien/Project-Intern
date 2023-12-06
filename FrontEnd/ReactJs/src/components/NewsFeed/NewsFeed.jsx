@@ -1,34 +1,30 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
+import React, { useState } from "react";
+import Sidebar from "./Sidebar";
+import Feed from "./Feed";
+import Rightbar from "./Rightbar";
+import { Box, createTheme, Stack, ThemeProvider } from "@mui/material";
+import Add from "./Add";
 
-function NewsFeed() {
-  const token = JSON.parse(localStorage.getItem('user'));
-  const [abc, setAbc] = useState('');
-    const fetchData = async () => {
-      console.log(token);
-      try {
-        const response = await axios.get('https://localhost:7038/api/auth/Test', {
-          headers: {
-            Authorization: `Bearer ${token.accessToken}`,
-          },
-        });
-        
-        // Xử lý dữ liệu từ máy chủ
-        console.log(response);
-        setAbc(response.data.email);
-      } catch (error) {
-        // Xử lý lỗi
-        console.error(error);
-      }
-    };
+const NewsFeed = () => {
+  const [mode, setMode] = useState("light");
+
+  const darkTheme = createTheme({
+    palette: {
+      mode: mode,
+    },
+  });
   return (
-    <div className='btn-btn-succeed container color-red'>
-      <button onClick={fetchData}>Gửi yêu cầu Test</button>
-      <h1>{abc}</h1>
-    </div>
-  )
-  
-}
+    <ThemeProvider theme={darkTheme}>
+      <Box bgcolor={"background.default"} color={"text.primary"}>    
+        <Stack direction="row" justifyContent="space-between">
+          <Sidebar setMode={setMode} mode={mode} />
+          <Feed />
+          <Rightbar />
+        </Stack>
+        <Add />
+      </Box>
+    </ThemeProvider>
+  );
+};
 
-export default NewsFeed
+export default NewsFeed;

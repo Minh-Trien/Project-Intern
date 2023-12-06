@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 function Home(){
     return(
     <div>
@@ -7,10 +8,9 @@ function Home(){
       <div className="row">
         <div className="col-sm-12">
           <div className="titlepage">
-            <h2>Our Plane</h2>
+            <h2>Our Nails</h2>
             <span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod t dolor in reprehenderit in voluptate{" "}
+            The paint design is all made by hand.{" "}
             </span>
           </div>
         </div>
@@ -19,10 +19,10 @@ function Home(){
         <div className="col-md-4">
           <div className="plan_bax text_align_center">
             <figure>
-              <img src="./assets/images/plan_img.jpg" alt="#" />
+              <img className='img-plan' src="./assets/images/plan_img.jpg" alt="#" />
             </figure>
             <div id="ho_plan" className="plan_text">
-              <h3>FLOWER DECORATIONS</h3>
+              <h3>Nails Design</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod t dolor in reprehenderit in voluptate{" "}
@@ -36,10 +36,10 @@ function Home(){
         <div className="col-md-4">
           <div className="plan_bax text_align_center">
             <figure>
-              <img src="./assets/images/plan_img1.jpg" alt="#" />
+              <img  className='img-plan' src="./assets/images/plan_img1.jpg" alt="#" />
             </figure>
             <div id="ho_plan" className="plan_text">
-              <h3>BEST RESTAURANT</h3>
+              <h3>BEST NAILS TRENDING</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod t dolor in reprehenderit in voluptate{" "}
@@ -53,15 +53,16 @@ function Home(){
         <div className="col-md-4">
           <div className="plan_bax text_align_center">
             <figure>
-              <img src="./assets/images/plan_img2.jpg" alt="#" />
+              <img  className='img-plan' src="./assets/images/plan_img2.jpg" alt="#" />
             </figure>
             <div id="ho_plan" className="plan_text">
-              <h3>HONEYMOON</h3>
+              <h3>lOVING</h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod t dolor in reprehenderit in voluptate{" "}
               </p>
-              <a className="read_more" href="Javascript:void(0)">
+             {/* <NavLink className="read_more" to='/'></NavLink> */}
+              <a className="read_more" >
                 Read More
               </a>
             </div>
@@ -156,16 +157,12 @@ function Home(){
                   <figure>
                     <img src="./assets/images/blog_img1.jpg" alt="#" />
                   </figure>
-                  <span>
-                    06
-                    <br />
-                    Feb
-                  </span>
+                  
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="marriage_text">
-                  <span>Post by : Marriage </span>
+                  <span>Post by : CHERRY TRÀ </span>
                   <h3>Tempor incididunt ut labore et dolore</h3>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -192,16 +189,12 @@ function Home(){
                   <figure>
                     <img src="./assets/images/blog_img2.jpg" alt="#" />
                   </figure>
-                  <span>
-                    06
-                    <br />
-                    Feb
-                  </span>
+                  
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="marriage_text">
-                  <span>Post by : Marriage </span>
+                  <span>Post by : TRIENKAITO </span>
                   <h3>Tempor incididunt ut labore et dolore</h3>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -353,29 +346,30 @@ function Home(){
               <div className="col-md-3">
                 <a href="index.html">
                   {" "}
-                  <img
+                  {/* <img
                     className="logo_fooetr"
-                    src="./assets/images/logo_footer.png"
+                    src=""
                     alt="#"
-                  />
+                  /> */}
                 </a>
+                <h2 >Contact Us</h2>
               </div>
               <div className="col-md-9">
                 <ul className="lacation">
                   <li>
-                    <i className="fa fa-map-marker" aria-hidden="true" /> Gb
-                    road 123 london Uk{" "}
+                    <i className="fa fa-map-marker" aria-hidden="true" /> 
+                    223/16 Trường Chinh, Đà Nẵng
                   </li>
                   <li>
                     <i
                       className="fa fa-volume-control-phone"
                       aria-hidden="true"
                     />{" "}
-                    G(+01) 123456789012
+                    (+84) 0775522664
                   </li>
                   <li>
                     <i className="fa fa-envelope" aria-hidden="true" />{" "}
-                    demo@gmail.com
+                    trien112345@gmail.com
                   </li>
                 </ul>
               </div>
@@ -431,23 +425,23 @@ function Home(){
               <div className="col-md-6 col-sm-6">
                 <ul className="social_icon">
                   <li>
-                    <a href="Javascript:void(0)">
-                      <i className="fa fa-facebook" aria-hidden="true" />
+                  <a href="Javascript:void(0)">
+                    <i class="fa-brands fa-facebook"></i>
                     </a>
                   </li>
                   <li>
                     <a href="Javascript:void(0)">
-                      <i className="fa fa-twitter" aria-hidden="true" />
+                    <i class="fa-brands fa-twitter"></i>
                     </a>
                   </li>
                   <li>
                     <a href="Javascript:void(0)">
-                      <i className="fa fa-instagram" aria-hidden="true" />
+                    <i class="fa-brands fa-instagram"></i>
                     </a>
                   </li>
                   <li>
                     <a href="Javascript:void(0)">
-                      <i className="fa fa-linkedin-square" aria-hidden="true" />
+                    <i class="fa-brands fa-linkedin"></i>
                     </a>
                   </li>
                 </ul>
@@ -459,7 +453,7 @@ function Home(){
           <div className="map_main">
             <div className="map-responsive">
               <iframe
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=223+Trường+Chinh,+Thanh+Khê,+Đà+Nẵng"
                 width={600}
                 height={378}
                 frameBorder={0}

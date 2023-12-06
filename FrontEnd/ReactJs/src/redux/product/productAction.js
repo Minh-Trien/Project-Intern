@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { useSelector } from 'react-redux';
+
 import { fetchAllProduct, GetProductsByTaskId, getSearch, fetchAllTask, GetProductsById } from '../../Service/productService';
 import { AddToCart, featchCarts, updateCarts, removeCartItem } from '../../Service/cartService';
 import {
@@ -11,6 +13,7 @@ import {
     FETCH_CARTS,
     UPDATE_CARTS
 } from './productType';
+
 
 export const fetchProducts = (page) => {
     return async (dispatch) => {
@@ -125,7 +128,7 @@ export const featchCart = (sessionId) => {
             if (response && response.data && response.data.$values) {
                 dispatch({
                     type: FETCH_CARTS,
-                    payload: response.data.$values
+                    payload: response.data.$values,                  
                 });
             } else {
                 // Xử lý trường hợp khi dữ liệu không đúng định dạng hoặc thiếu

@@ -1,8 +1,8 @@
-﻿
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Shopping.ManagerUser.Repository;
 using Shopping.ManagerUser.ViewModels;
+using Shopping.ManagerToken.Service;
 using Shopping.Models.Models;
 using System;
 using System.Collections.Generic;
@@ -12,22 +12,21 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-
-
+using Shopping.ManagerToken.ViewModels;
 namespace Shopping.ManagerUser.Services
 {
     public class AuthService
-    {
+    {   
 
         private readonly UserRepository _userRepository;
         private readonly IConfiguration _configuration;
-        private readonly TokenRepository _tokenRepository;
+        private readonly TokenService _tokenService;
         private readonly Email _email;
 
-        public AuthService(UserRepository userRepository, IConfiguration configuration, TokenRepository tokenRepository, Email email)
+        public AuthService(UserRepository userRepository, IConfiguration configuration, TokenService tokenService, Email email)
         {
             _userRepository = userRepository;
-            _tokenRepository = tokenRepository;
+            _tokenService = tokenService;
             _configuration = configuration;
             _email = email;
 
@@ -66,7 +65,7 @@ namespace Shopping.ManagerUser.Services
                     return null; // Login unsuccessful
                 }
 
-                var token = await GenerateToken(user);
+                var token = await _tokenService.GenerateToken(user);
 
                 return token;
             }
@@ -97,58 +96,5 @@ namespace Shopping.ManagerUser.Services
             return userRegister;
         }
 
-        private async Task<TokenModel> GenerateToken(User user)
-        {
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_configuration["JWT:SecretKey"]);
-
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim(ClaimTypes.Name, user.LastName),
-                    new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(ClaimTypes.Role, user.Role),
-                }),
-                IssuedAt = DateTime.UtcNow,
-                Issuer = _configuration["JWT:Issuer"],
-                Audience = _configuration["JWT:Audience"],
-                Expires = DateTime.UtcNow.AddMinutes(20),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
-            };
-
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            var accessToken = tokenHandler.WriteToken(token);
-            var refreshToken = GenerateRefreshToken();
-
-
-            var refreshTokenEntity = new Token
-            {
-                JwtId = token.Id,
-                UserId = user.Id,
-                Token1 = refreshToken,
-                IsUsed = false,
-                IsRevoked = false,
-                IssuedAt = DateTime.UtcNow,
-                ExpiredAt = DateTime.UtcNow.AddHours(1)
-            };
-            await _tokenRepository.InsertAsync(refreshTokenEntity);
-            return new TokenModel
-            {
-                AccessToken = accessToken,
-                RefreshToken = refreshToken
-            };
-        }
-
-        private string GenerateRefreshToken()
-        {
-            var random = new byte[32];
-            using (var rng = RandomNumberGenerator.Create())
-            {
-                rng.GetBytes(random);
-
-                return Convert.ToBase64String(random);
-            }
-        }
     }
 }

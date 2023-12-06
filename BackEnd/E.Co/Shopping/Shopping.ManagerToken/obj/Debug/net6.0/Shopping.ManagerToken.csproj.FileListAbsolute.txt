@@ -1,0 +1,17 @@
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping\Shopping.ManagerToken\bin\Debug\net6.0\Shopping.ManagerToken.deps.json
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping\Shopping.ManagerToken\bin\Debug\net6.0\Shopping.ManagerToken.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping\Shopping.ManagerToken\bin\Debug\net6.0\Shopping.ManagerToken.pdb
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping\Shopping.ManagerToken\bin\Debug\net6.0\Shopping.Common.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping\Shopping.ManagerToken\bin\Debug\net6.0\Shopping.Models.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping\Shopping.ManagerToken\bin\Debug\net6.0\Shopping.Common.pdb
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping\Shopping.ManagerToken\bin\Debug\net6.0\Shopping.Models.pdb
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping\Shopping.ManagerToken\obj\Debug\net6.0\Shopping.ManagerToken.csproj.AssemblyReference.cache
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping\Shopping.ManagerToken\obj\Debug\net6.0\Shopping.ManagerToken.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping\Shopping.ManagerToken\obj\Debug\net6.0\Shopping.ManagerToken.AssemblyInfoInputs.cache
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping\Shopping.ManagerToken\obj\Debug\net6.0\Shopping.ManagerToken.AssemblyInfo.cs
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping\Shopping.ManagerToken\obj\Debug\net6.0\Shopping.ManagerToken.csproj.CoreCompileInputs.cache
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping\Shopping.ManagerToken\obj\Debug\net6.0\Shopping.ManagerToken.csproj.CopyComplete
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping\Shopping.ManagerToken\obj\Debug\net6.0\Shopping.ManagerToken.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping\Shopping.ManagerToken\obj\Debug\net6.0\refint\Shopping.ManagerToken.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping\Shopping.ManagerToken\obj\Debug\net6.0\Shopping.ManagerToken.pdb
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping\Shopping.ManagerToken\obj\Debug\net6.0\ref\Shopping.ManagerToken.dll

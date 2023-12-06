@@ -22,4 +22,8 @@ const test = (token) => {
     })
 }
 
-export {login, register,confirmEmail,sendEmail, test}
+const getIdByEmail = (email) => {
+    return customize.get(`/api/user/getUserIdByEmail?email=${email}`);
+}
+
+export {login, register,confirmEmail,sendEmail, test,getIdByEmail}

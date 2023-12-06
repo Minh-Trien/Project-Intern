@@ -27,7 +27,7 @@ namespace Shopping.Models.Models
         public virtual DbSet<Token> Tokens { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
         public virtual DbSet<WishList> WishLists { get; set; } = null!;
-
+        public virtual DbSet<Header> Headers { get; set; } = null!;
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -117,6 +117,25 @@ namespace Shopping.Models.Models
                     .HasColumnName("name");
             });
 
+            modelBuilder.Entity<Header>(entity =>
+            {
+                entity.ToTable("Header");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(50)
+                    .HasColumnName("name");
+
+                entity.Property(e => e.RollName)
+                   .HasMaxLength(50)
+                   .HasColumnName("rollName");
+
+                entity.Property(e => e.Link)
+                  .HasMaxLength(50)
+                  .HasColumnName("linkTo");
+
+            });
 
 
             modelBuilder.Entity<Comment>(entity =>
@@ -252,7 +271,7 @@ namespace Shopping.Models.Models
 
 
 
-                entity.Property(e => e.Quatity).HasColumnName("quatity");
+                entity.Property(e => e.Quantity).HasColumnName("quantity");
 
 
 

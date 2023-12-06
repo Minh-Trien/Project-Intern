@@ -12,9 +12,11 @@ namespace Shopping.ManagerProduct.Services
     public class CartService
     {
         private readonly CartRepository _cartRepository;
-        public CartService(CartRepository cartRepository )
+        private readonly Shopping912Context _db;
+        public CartService(CartRepository cartRepository, Shopping912Context db)
         {
             _cartRepository = cartRepository;
+            _db = db;
         }
         public async System.Threading.Tasks.Task AddNew(CartItem cartItem)
         {
@@ -38,6 +40,13 @@ namespace Shopping.ManagerProduct.Services
         {
             return await _cartRepository.GetIdAsync(sessionID);
 
+        }
+
+        public async System.Threading.Tasks.Task DeleteAll(int sessionId)
+        {
+            var cartItems = _db.CartItems.Where(c => c.SessionId == sessionId);
+            _db.CartItems.RemoveRange(cartItems);
+            _db.SaveChanges();
         }
 
     }

@@ -9,11 +9,13 @@
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
-
+	
   <ItemGroup>
-    <ProjectReference Include="..\Shopping.Common\Shopping.Common.csproj" />
     <ProjectReference Include="..\Shopping.ManagerUser\Shopping.ManagerUser.csproj" />
-    <ProjectReference Include="..\Shopping.Models\Shopping.Models.csproj" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Folder Include="Model\" />
   </ItemGroup>
 
 </Project>

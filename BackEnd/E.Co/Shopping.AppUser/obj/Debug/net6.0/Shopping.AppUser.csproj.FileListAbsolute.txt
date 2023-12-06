@@ -71,3 +71,5 @@ C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.AppUser\obj\Debug\n
 C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.AppUser\obj\Debug\net6.0\Shopping.AppUser.pdb
 C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.AppUser\obj\Debug\net6.0\Shopping.AppUser.genruntimeconfig.cache
 C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.AppUser\obj\Debug\net6.0\ref\Shopping.AppUser.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.AppUser\bin\Debug\net6.0\Shopping.ManagerToken.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.AppUser\bin\Debug\net6.0\Shopping.ManagerToken.pdb

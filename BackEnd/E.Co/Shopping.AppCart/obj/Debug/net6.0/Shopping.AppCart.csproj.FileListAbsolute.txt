@@ -70,3 +70,6 @@ C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.AppCart\obj\Debug\n
 C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.AppCart\obj\Debug\net6.0\Shopping.AppCart.genruntimeconfig.cache
 C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.AppCart\obj\Debug\net6.0\ref\Shopping.AppCart.dll
 C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.AppCart\obj\Debug\net6.0\Shopping.AppCart.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.AppCart\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.AppCart\bin\Debug\net6.0\Shopping.ManagerToken.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.AppCart\bin\Debug\net6.0\Shopping.ManagerToken.pdb

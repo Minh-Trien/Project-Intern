@@ -1,7 +1,35 @@
 /* CSS */
+.top-header{
+    background-color: white !important;
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+
+}
+.top-header.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Adjust the z-index based on your layout requirements */
+   /* Adjust the background color as needed */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for visual separation */
+}
+
+.header{
+  padding-bottom: 0px;
+}
+/* li.nav-item {
+  border-bottom-style: solid;
+    padding-bottom: 30px;
+} */
+
+a.nav-link.active {
+  border-bottom: solid;
+  padding-bottom: 20px !important;
+}
 .login-button {
-    display: inline-block;
-   
+    display: inline-block; 
     background-color: #ffffff; /* Đổi màu nền thành Pink (hồng kem) */
     color: black;
     font-size: 16px;
@@ -22,10 +50,11 @@
   
   .profile_image{
     float: right;
-    width: 1.2cm;
-    height: 1.2cm;
+    width: 1cm;
+    height: 1cm;
     border-radius: 50%;
     overflow: hidden; 
+    margin-top: 5px;
   }
   .profile-container {
     position: relative;
@@ -105,7 +134,7 @@
   display: block;
   margin-top: 55px;
   border: 2px solid rgba(0, 0, 0, 0.158);
- 
+  
 }
 .logout{
  
@@ -115,3 +144,5 @@
 
  
 }
+
+

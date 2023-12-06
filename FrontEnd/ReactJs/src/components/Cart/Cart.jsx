@@ -3,24 +3,33 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { featchCart } from '../../redux/product/productAction';
 import { removeFromCart, updateCart } from '../../redux/product/productAction';
-
+import { ConstructionOutlined, Token } from '@mui/icons-material';
+import { handleRefreshRedux } from '../../redux/users/userAction'
+import {deleteAllCart} from '../../Service/cartService';
+import {CreateOrder, CreateOrderItem} from '../../Service/orderService'
+import { toast } from 'react-toastify';
 function Cart() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(featchCart(1))
-  }, []);
 
+  const navigate = useNavigate();
+  const sessionId = useSelector(state => state.user.account.sessionId );
+  
+  const [Orderid, setOrderId] = useState("");
+//  setId(userId);
+  const user = useSelector(state => state.user.account)
+  const dispatch = useDispatch();
+  
   const handleDecrement = (itemId) => {
     const item = cart.find((item) => item.id === itemId);
     if (item.quantity > 1) {
       dispatch(updateCart(itemId, item.quantity - 1));
     }
-
   };
   // const [cart, setCart] = useState([]);
   let cart = useSelector(state => state.cart.cartItems)
-
+  useEffect(() => {   
+    //dispatch(featchCart(sessionId));   
+       
+  }, [cart]);
   const handleIncrement = (itemId) => {
     const item = cart.find((item) => item.id === itemId);
     //  updateQuantity(itemId, item.quantity + 1);
@@ -29,6 +38,7 @@ function Cart() {
   const getTotalPrice = () => {
     return cart.reduce((total, item) => total + item.product.price * item.quantity, 0);
   };
+
   const getCartItemsPrice = (quantity, price) => {
     return quantity * price;
   }
@@ -39,17 +49,30 @@ function Cart() {
     //let res = await removeCartItem(productId);
     dispatch(removeFromCart(cartId));
     //   console.log(res);
-  };
+  }; 
+   let totalPrice = getTotalPrice();
+  
+  const HandlePayment = async (totalPrice) => {
+   console.log(totalPrice)
+    let res = await CreateOrder(totalPrice);
+ //   setOrderId(res.data.id);
+    console.log(res.data.id);
+    if(res.data.id){
+      cart.map( async (obj) => {
+     let response = await CreateOrderItem(res.data.id,obj.productId, obj.quantity);
+     console.log(response);
+    });
+    }
+    let ress = await deleteAllCart(sessionId);
+    console.log(ress) 
+    dispatch(featchCart(sessionId));
+    toast("Create order succeed, You need check your email to payment!")
+    navigate('/')
+  }
+  
   const BackToShop = () => {
     navigate('/product')
   }
-  // Hàm cập nhật số lượng sản phẩm trong giỏ hàng
-  const updateQuantity = (productId, newQuantity) => {
-    const updatedCart = cart.map((item) =>
-      item.id === productId ? { ...item, quantity: newQuantity } : item
-    );
-    cart = updatedCart;
-  };
 
   return (
     <section className="h-100 h-custom" style={{ backgroundColor: "#d2c9ff" }}>
@@ -81,7 +104,7 @@ function Cart() {
                               className="btn btn-link"
                               onClick={() => handleDecrement(item.id)}
                             >
-                              -<i className="" />
+                              <i class="fa-solid fa-minus" style={{color: "#000000"}}></i>
                             </button>
                             <div className="input-group">
                               <input
@@ -99,11 +122,11 @@ function Cart() {
                               className="btn btn-link"
                               onClick={() => handleIncrement(item.id)}
                             >
-                              +<i className="" />
+                              <i class="fa-solid fa-plus" style={{color: "#000000"}}></i>
                             </button>
                           </div>
                           <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                            <h6 className="mb-0">{getCartItemsPrice(item.quantity, item.product.price)}</h6>
+                            <h6 className="mb-0">{getCartItemsPrice(item.quantity, item.product.price)} $</h6>
                           </div>
                           <div className="col-md-1 col-lg-1 col-xl-1 text-end">
                             <a href="#" className="text-muted" >
@@ -169,13 +192,12 @@ function Cart() {
                           name="IdCart"
                           defaultValue=""
                         />
-                        <button
-                          type="submit"
-                          className="btn btn-dark btn-block btn-lg"
-                          data-mdb-ripple-color="dark"
-                        >
-                          Payment
-                        </button>
+                        <a
+                        onClick={() => HandlePayment(totalPrice)}
+                        className="btn btn-secondary btn-user btn-block"
+                      > <i className="fa-solid fa-credit-card fa-fade mr-2"></i>
+                         Payment
+                      </a>
                       </div>
                     </form>
                   </div>

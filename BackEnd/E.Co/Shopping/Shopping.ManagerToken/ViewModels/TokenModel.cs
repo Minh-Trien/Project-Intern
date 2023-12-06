@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shopping.ManagerUser.ViewModels
+namespace Shopping.ManagerToken.ViewModels
 {
     public class TokenModel
     {

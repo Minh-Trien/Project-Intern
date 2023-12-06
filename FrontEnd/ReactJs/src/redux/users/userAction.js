@@ -1,5 +1,6 @@
-import { login, sendEmail } from '../../Service/authService';
+import { getIdByEmail, login, sendEmail } from '../../Service/authService';
 import { toast } from 'react-toastify';
+import { addNewSession } from '../../Service/cartService';
 export const USER_REGISTER = 'USER_REGISTER';
 export const USER_LOGOUT = 'USER_LOGOUT';
 export const FETCH_USER_LOGIN = 'FETCH_USER_LOGIN';
@@ -7,6 +8,8 @@ export const FETCH_USER_ERROR = 'FETCH_USER_ERROR';
 export const FETCH_USER_SUCCESS = 'FETCH_USER_SUCCESS';
 export const FETCH_USER_LOGOUT = 'FETCH_USER_LOGOUT';
 export const USER_REFRESH = 'USER_REFRESH';
+
+
 
 export const handleLoginRedux = (email, password, remember) => {
    return async (dispatch, getState) => {
@@ -37,12 +40,21 @@ export const handleLoginRedux = (email, password, remember) => {
 
       if (res && res.data && res.data.data && res.data.data.accessToken) {
          localStorage.setItem('user', JSON.stringify(res.data.data))
+         localStorage.setItem('email', JSON.stringify(email))
+         console.log(email);
+         let resID = await getIdByEmail(email);
+            console.log(resID.data);
+      let resSession = await addNewSession(resID.data);
+        console.log(resSession.data);
          dispatch({
             type: FETCH_USER_SUCCESS,
             data: {
                email: email.trim(),
+               role : "user", 
+               sessionId : resSession.data           
             }
          });
+         
          toast(res.data.message);
       } else {
          dispatch({
@@ -66,12 +78,26 @@ export const handleLogoutRedux = () => {
    }
 }
 
+
+
 export const handleRefreshRedux = () => {
-   return (dispatch, getState) => {
+   return async (dispatch, getState) => {
+      try {
+       let email = JSON.parse(localStorage.getItem('email'));
+       //console.log(email)
+       let resID = await getIdByEmail(email);
+   //    console.log(resID.data);                                                               
+     let resSession = await addNewSession(resID.data);
+    // console.log(resSession.data);       
       dispatch({
          type: USER_REFRESH,
+         data :{
+            email : email,
+           sessionId : resSession.data
+         }
+      },);} catch (error) {
          
-      },);
+      }
    }
 }
 

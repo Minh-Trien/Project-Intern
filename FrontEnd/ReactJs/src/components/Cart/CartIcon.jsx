@@ -15,13 +15,13 @@ function CartIcon() {
 
   return (
   <>
-  <div className='cart-container '>
+  <div className='cart '>
       <div
         className="cart-icon"
-        style={{ width: "1cm", height: "1cm" }}
+      //  style={{ width: "40px", height: "40px", marginTop:0, marginBottom:"5px" }}
         onClick={toggleCart}
       >
-        <i className="fa-solid fa-cart-shopping" id='cart'></i>
+<i class="fa-solid fa-cart-shopping fa-fade " style={{color: "#d44e4e"}}></i>
       </div>
 
       {/*end navbar-right */}

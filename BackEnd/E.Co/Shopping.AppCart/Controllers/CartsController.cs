@@ -15,11 +15,13 @@ namespace Shopping.Controllers
 
         private readonly CartService _cartService;
         private readonly ProductService _productService;
+        
 
         public CartsController(CartService cartService, ProductService productService)
         {
             _cartService = cartService;
             _productService = productService;
+          
         }
 
         [HttpGet]
@@ -82,5 +84,21 @@ namespace Shopping.Controllers
             }
 
         }
+
+        [HttpDelete("deleteAll")]
+        public async Task<ActionResult<CartItem>> DeleteAllCart(int sessionId)
+        {
+            if (sessionId == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+            await _cartService.DeleteAll(sessionId);
+                return Ok("Delete Succeed");
+            }
+
+        }
+
     } 
 }

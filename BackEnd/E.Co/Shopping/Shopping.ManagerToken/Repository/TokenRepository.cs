@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shopping.ManagerUser.Repository
+namespace Shopping.ManagerToken.Repository
 {
     public class TokenRepository : BaseRepository<Token, string>
     {
@@ -14,6 +14,6 @@ namespace Shopping.ManagerUser.Repository
         {
 
         }
-        
+
     }
 }

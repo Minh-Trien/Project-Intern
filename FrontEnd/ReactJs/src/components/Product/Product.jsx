@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Product() {
   const cartItems = useSelector(state => state.cart.cartItems);
+  const sessionId = useSelector(state => state.user.account.sessionId );
   const navigate = useNavigate();
   const totalPage = useSelector(state => state.cart.totalPages);
   const products = useSelector(state => state.cart.products)
@@ -29,10 +30,15 @@ function Product() {
   const dispatch = useDispatch();
   
   useEffect(() => {
-    HandleFetchAllProducts(page);
     getTasks()
     generateRandomInt()
   }, []);
+
+  useEffect(() => {
+   // HandleFetchAllProducts(page);
+  dispatch(fetchProducts(page));
+  //dispatch(fetchSingleProduct());  
+  }, [page]);
 
   const getTasks = async () => {
     let res = await fetchAllTask();
@@ -88,6 +94,7 @@ function Product() {
       }
     } else {
       toast.error("You must log in to add to the cart!");
+      navigate('/login');
     }
   };
   
@@ -102,59 +109,60 @@ function Product() {
 
   return (
     <div className="product">
-      <div className="album py-5 bg-light">
+      <div className="album py-5 ">
         <div className="">
           <div className='row'>
             <div className='col-md-3'>
               <div className="dropdown my-2 ml-5">
-                <a className=" categories btn  dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a className=" categories btn  font-weight-bold  dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                   Categories
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   {task && task.length > 0 && task.map((item, index) => (
                     <li key={index} onClick={() => handleTask(item.id, page)}><a className="dropdown-item" >{item.name}</a></li>
                   ))}
-                  <li onClick={() => HandleFetchAllProducts(page)}><a className="dropdown-item" >All</a></li>
+                  <li onClick={() => HandleFetchAllProducts(page)}><a className="dropdown-item" >All PRODUCT</a></li>
                 </ul>
               </div>
-            </div>
-            <div className='col-md-8'>
-              <div className='my-3 mb-5 '>
+              <div className='my-2 ml-5'>
                 <input
+                 
                   type='text'
                   className='form-control input-search'
                   placeholder='Search.......'
                   onChange={(sr) => handleSearch(sr)} />
               </div>
+            </div>
+            <div className='col-md-8'>
+              
               <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3 ">
                 {products && products.length > 0 && products
                   .map((item, index) => (
                   <div className="col" key={item.id}>
                       <div className="card shadow-sm">
-                        <img src={item.image} alt="" />
+                        <img className='img-product' src={item.image} alt=""  onClick={() => handleSingleProduct(item.id)}/>
                         <title>Placeholder</title>
                         <div className="card-body">
                           <p className="card-text">{item.name}</p>
                           <p className="card-text">{item.description}</p>
                           <div className="d-flex justify-content-between align-items-center">
                             <div className="btn-group">
-                              <button
-                                type="button"
-                                className="btn btn-sm btn-outline-secondary"
+                              <button                              
                                 onClick={() => handleSingleProduct(item.id)}
+                                className='mr-3'
                               >
-                                View
+                                <i class="fa-solid fa-shirt fa-lg" style={{color:"#0b0a0a"}}></i>
+                                
                               </button>
                             <button
-                                type="button"
-                                className="btn btn-sm btn-outline-secondary"
-                                onClick={() => handleAddToCart(1,item.id, 1)}
+                                onClick={() => handleAddToCart(sessionId,item.id, 1)                             
+                                }
                               >
-                                AddToCart
+                               <i class="fa-solid fa-cart-plus fa-lg fa-bounce" style={{color: "#0d0d0d"}}></i>
                               </button>
                               
                             </div>
-                            <small className="text-muted">{item.price}.000 VNĐ</small>
+                            <small className="text-muted">{item.price} $</small>
                           </div>
                         </div>
                       </div>

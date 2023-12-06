@@ -34,7 +34,9 @@
     }
     .profile_image{
         margin-left: 30px !important;
+        float: none;
     }
+
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -43,7 +45,7 @@
     }
     .logo {
         padding-top: 4px;
-
+        
     }
     .navigation.navbar-dark .navbar-nav .nav-link {
         padding: 9px 19px;
@@ -97,14 +99,28 @@
         margin-right: 0;
     }
     .profile_image{
-        margin-left: 50px !important;
+        
+        margin-left: 20px !important;
+        
+    }
+
+    .cart-icon {
+        float: none !important;
+        margin-left: -30px !important;
     }
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
     .profile_image{
-        margin-left: 30px !important;
+    float: none !important; 
+    width: 1cm;
+    height: 1cm;
+    border-radius: 50%;
+    overflow: hidden;
+    
     }
+
+
     ul.search {
         display: none;
     }
@@ -171,6 +187,7 @@
         border: inherit;
         float: right;
         padding-top: 7px;
+        margin-right: 40px !important;
     }
     .navigation.navbar-dark .navbar-toggler-icon {
         background: url(../images/menu_icon.png);
@@ -295,5 +312,18 @@
     margin-left: 250px;
     margin-top: -40px !important;
     
+    }
+}
+@media (min-width: 480px) and (max-width: 575px){
+    .profile_image {
+        margin-top: -45px !important;
+    }
+}
+@media (max-width: 480px) {
+    .cart-icon{
+        margin-top: -110px !important;
+    }
+    .profile_image{
+        margin-top: -110px !important;
     }
 }

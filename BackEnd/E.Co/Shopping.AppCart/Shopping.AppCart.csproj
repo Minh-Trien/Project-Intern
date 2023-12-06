@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Shopping.ManagerProduct\Shopping.ManagerProduct.csproj" />
-    <ProjectReference Include="..\Shopping.Models\Shopping.Models.csproj" />
+    <ProjectReference Include="..\Shopping\Shopping.ManagerToken\Shopping.ManagerToken.csproj" />
   </ItemGroup>
 
 </Project>

@@ -8,7 +8,7 @@ const AddToCart = (sessionId,productId,quantity) => {
       SessionId : sessionId
     };
     return customize.post(`/api/carts`, cartItem);
-  }
+}
 
 const featchCarts = (sessionId) =>{
     return customize.get(`/api/carts?sessionID=${sessionId}`, sessionId);
@@ -28,4 +28,12 @@ const removeCartItem = (id) => {
   return customize.delete(`/api/carts/${id}`);
 }
 
-export {AddToCart, featchCarts, updateCarts,removeCartItem}
+const addNewSession = (id) => {
+  return customize.post(`/api/session?UserID=${id}`)
+}
+
+const deleteAllCart = (sessionId) => {
+  return customize.delete(`/api/carts/deleteAll?sessionId=${sessionId} `)
+}
+
+export {AddToCart, featchCarts, updateCarts,removeCartItem,addNewSession,deleteAllCart}

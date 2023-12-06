@@ -1,12 +1,17 @@
 ﻿
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.VisualBasic;
 using Shopping.ManagerUser.Repository;
 using Shopping.ManagerUser.ViewModels;
 using Shopping.Models.Models;
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,10 +20,12 @@ namespace Shopping.ManagerUser.Services
     public class UserService
     {
         private readonly UserRepository _UserRepository;
-        public UserService(UserRepository UserRepository)
+        private readonly Shopping912Context _db;
+        public UserService(UserRepository UserRepository, Shopping912Context db)
         {
 
             _UserRepository = UserRepository;
+            _db = db;
         }
         public async Task<PaginationViewModels> GetUserPaging(int page, int pageSize)
         {
@@ -45,6 +52,22 @@ namespace Shopping.ManagerUser.Services
         public async System.Threading.Tasks.Task AddNew(User User)
         {
             await _UserRepository.InsertAsync(User);
+        }
+
+        public async Task<int> GetUserIdByEmail ( string email)
+        {
+            var user = await _db.Users.SingleOrDefaultAsync(u => u.Email == email);
+            if (user != null)
+            {
+                // User found, do something with it
+                int id = user.Id;
+                return id;
+            }
+            else
+            {
+                // User not found
+                return 0;
+            }
         }
 
         public async Task<User> Update(int id, User User)

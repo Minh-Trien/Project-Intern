@@ -28,6 +28,11 @@ namespace Shopping.AppUser.Controllers
 
         }
 
+        [HttpGet("getUserIdByEmail")]
+        public async Task<ActionResult<int>> GetUserIdByEmail(string email)
+        {
+           return await _userService.GetUserIdByEmail(email);
+        }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUserByID(int id)

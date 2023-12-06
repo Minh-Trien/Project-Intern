@@ -47,24 +47,56 @@ function Contact() {
 
   return (
     <div>
-  <div className="back_re">
+  
+  {/*  contact */}
+  <div className="contact mb-4">
     <div className="container">
-      <div className="row">
-        <div className="col-md-12">
-          <div className="title">
-            <h2>Contact Us</h2>
+    <div className="row">
+        <div className="col-sm-12">
+          <div className="ru_bg">
+            <div className="row">
+              <div className="col-md-3">
+                <a href="index.html">
+                  {" "}
+                  <img
+                    className="logo_fooetr"
+                    src="./assets/images/logo_footer.png"
+                    alt="#"
+                  />
+                </a>
+              </div>
+              <div className="col-md-9">
+                <ul className="lacation">
+                  <li>
+                    <i className="fa fa-map-marker" aria-hidden="true" /> 
+                    223/16 Trường Chinh, Đà Nẵng
+                  </li>
+                  <li>
+                    <i
+                      className="fa fa-volume-control-phone"
+                      aria-hidden="true"
+                    />{" "}
+                    (+84) 0775522664
+                  </li>
+                  <li>
+                    <i className="fa fa-envelope" aria-hidden="true" />{" "}
+                    trien112345@gmail.com
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  {/*  contact */}
-  <div className="contact">
-    <div className="container">
       <div className="row d_flex">
         <div className="col-md-6">
           <form id="request" className="main_form" onSubmit={handleSubmit}>
             <div className="row">
+            <div className="col-md-12">
+            <div className="titlepage">
+              <h2>Contact Us</h2>
+            </div>
+          </div>
               <div className="col-md-12 ">
                 <input
                   className="contactus"
@@ -116,22 +148,22 @@ function Contact() {
                 <ul className="social_icon">
                   <li>
                     <a href="Javascript:void(0)">
-                      <i className="fa fa-facebook" aria-hidden="true" />
+                    <i class="fa-brands fa-facebook"></i>
                     </a>
                   </li>
                   <li>
                     <a href="Javascript:void(0)">
-                      <i className="fa fa-twitter" aria-hidden="true" />
+                    <i class="fa-brands fa-twitter"></i>
                     </a>
                   </li>
                   <li>
                     <a href="Javascript:void(0)">
-                      <i className="fa fa-instagram" aria-hidden="true" />
+                    <i class="fa-brands fa-instagram"></i>
                     </a>
                   </li>
                   <li>
                     <a href="Javascript:void(0)">
-                      <i className="fa fa-linkedin-square" aria-hidden="true" />
+                    <i class="fa-brands fa-linkedin"></i>
                     </a>
                   </li>
                 </ul>
@@ -143,7 +175,7 @@ function Contact() {
           <div className="map_main">
             <div className="map-responsive">
               <iframe
-                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=223+Trường+Chinh,+Thanh+Khê,+Đà+Nẵng"
                 width={600}
                 height={378}
                 frameBorder={0}

@@ -53,9 +53,16 @@ builder.Services.AddCors(options =>
 });
 //builder.Services.AddAutoMapper();
 
+builder.Services.AddDistributedMemoryCache();
 
-builder.Services.AddTransient<UserService>();
-builder.Services.AddTransient<AuthService>();
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = ".AdventureWorks.Session";
+    options.IdleTimeout = TimeSpan.FromSeconds(10);
+    options.Cookie.IsEssential = true;
+});
+
+
 
 builder.Services.AddDbContext<Shopping912Context>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConection"), builder =>
@@ -82,6 +89,7 @@ app.UseCors("AllowAll"); // Put this before UseAuthentication and UseAuthorizati
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseSession();
 app.MapControllers();
 app.MapHealthChecks("/health");
 app.Run();

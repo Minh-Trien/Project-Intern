@@ -18,7 +18,6 @@ namespace Shopping.ManagerProduct.Services
     {
         private readonly ProductRepository _productRepository;
         public ProductService(ProductRepository productRepository) {
-
             _productRepository = productRepository;
         }
         public async Task<PaginationViewModels> GetProductPaging(int page, int pageSize)

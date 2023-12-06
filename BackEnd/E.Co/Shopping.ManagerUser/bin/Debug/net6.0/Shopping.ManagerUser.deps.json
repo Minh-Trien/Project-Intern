@@ -11,6 +11,7 @@
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.21",
           "Microsoft.EntityFrameworkCore": "6.0.21",
           "Shopping.Common": "1.0.0",
+          "Shopping.ManagerToken": "1.0.0",
           "Shopping.Models": "1.0.0"
         },
         "runtime": {
@@ -442,6 +443,16 @@
           "Shopping.Common.dll": {}
         }
       },
+      "Shopping.ManagerToken/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.21",
+          "Shopping.Common": "1.0.0",
+          "Shopping.Models": "1.0.0"
+        },
+        "runtime": {
+          "Shopping.ManagerToken.dll": {}
+        }
+      },
       "Shopping.Models/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "6.0.21",
@@ -747,6 +758,11 @@
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
     },
     "Shopping.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Shopping.ManagerToken/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

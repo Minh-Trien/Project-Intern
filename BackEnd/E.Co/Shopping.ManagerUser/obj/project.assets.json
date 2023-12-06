@@ -772,6 +772,21 @@
           "bin/placeholder/Shopping.Common.dll": {}
         }
       },
+      "Shopping.ManagerToken/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.21",
+          "Shopping.Common": "1.0.0",
+          "Shopping.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Shopping.ManagerToken.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shopping.ManagerToken.dll": {}
+        }
+      },
       "Shopping.Models/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1983,6 +1998,11 @@
       "path": "../Shopping.Common/Shopping.Common.csproj",
       "msbuildProject": "../Shopping.Common/Shopping.Common.csproj"
     },
+    "Shopping.ManagerToken/1.0.0": {
+      "type": "project",
+      "path": "../Shopping/Shopping.ManagerToken/Shopping.ManagerToken.csproj",
+      "msbuildProject": "../Shopping/Shopping.ManagerToken/Shopping.ManagerToken.csproj"
+    },
     "Shopping.Models/1.0.0": {
       "type": "project",
       "path": "../Shopping.Models/Shopping.Models.csproj",
@@ -1994,6 +2014,7 @@
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.21",
       "Microsoft.EntityFrameworkCore >= 6.0.21",
       "Shopping.Common >= 1.0.0",
+      "Shopping.ManagerToken >= 1.0.0",
       "Shopping.Models >= 1.0.0"
     ]
   },
@@ -2035,6 +2056,9 @@
             },
             "C:\\Users\\TrienTM\\Documents\\Kai Project\\BackEnd\\E.Co\\Shopping.Models\\Shopping.Models.csproj": {
               "projectPath": "C:\\Users\\TrienTM\\Documents\\Kai Project\\BackEnd\\E.Co\\Shopping.Models\\Shopping.Models.csproj"
+            },
+            "C:\\Users\\TrienTM\\Documents\\Kai Project\\BackEnd\\E.Co\\Shopping\\Shopping.ManagerToken\\Shopping.ManagerToken.csproj": {
+              "projectPath": "C:\\Users\\TrienTM\\Documents\\Kai Project\\BackEnd\\E.Co\\Shopping\\Shopping.ManagerToken\\Shopping.ManagerToken.csproj"
             }
           }
         }

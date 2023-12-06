@@ -15,3 +15,5 @@ C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\obj\
 C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\obj\Debug\net6.0\refint\Shopping.ManagerProduct.dll
 C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\obj\Debug\net6.0\Shopping.ManagerProduct.pdb
 C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\obj\Debug\net6.0\ref\Shopping.ManagerProduct.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\bin\Debug\net6.0\Shopping.ManagerToken.dll
+C:\Users\TrienTM\Documents\Kai Project\BackEnd\E.Co\Shopping.ManagerProduct\bin\Debug\net6.0\Shopping.ManagerToken.pdb

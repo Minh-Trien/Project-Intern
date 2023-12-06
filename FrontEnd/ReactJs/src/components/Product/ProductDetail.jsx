@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../assets/productDetail.css';
 import '../assets/responsive.css';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { addToCart, updateCart } from '../../redux/product/productAction';
+import { addToCart, updateCart,fetchSingleProduct } from '../../redux/product/productAction';
 import { toast } from 'react-toastify';
 const ProductDetail = () => {
 
@@ -39,7 +39,7 @@ const ProductDetail = () => {
       toast.error("You must log in to add to the cart!");
     }
   };
-
+ 
   const handlePlus = () => {
     setQuantity(quantity + 1);
   }
@@ -106,10 +106,10 @@ const ProductDetail = () => {
               </div>
               <div className="original_price">
                 {" "}
-                ₹ {(parseFloat(product.price) + 30).toFixed(2)}
+                 {(parseFloat(product.price) + 30)} $
               </div>
               <div className="product_price">
-                {product.price}
+                {product.price} $
               </div>
               <ul className="star_rating">
                 <li>
